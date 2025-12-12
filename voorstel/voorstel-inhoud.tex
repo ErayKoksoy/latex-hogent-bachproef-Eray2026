@@ -15,37 +15,76 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+Mobiele applicaties spelen een steeds centralere rol binnen het hoger onderwijs. Ze ondersteunen studenten bij communicatie, studieplanning en het raadplegen van campusgerelateerde informatie. Door deze digitalisering worden mobiele toepassingen een essentieel onderdeel van het dagelijkse studentenleven. Ondanks deze belangrijke functie worden digitale toegankelijkheidsrichtlijnen, zoals de Web Content Accessibility Guidelines (WCAG)\textcite{Vlaanderen_WCAG_nodate}, tijdens ontwikkeltrajecten nog te vaak onvoldoende geïntegreerd worden. Uit het \textcite{BelgianWebAccessibility2024} blijkt dat ongeveer 72\% van de Belgische overheidswebsites niet conform is aan de geldende toegankelijkheidsnormen. Aangezien onderwijsinstellingen deel uitmaken van de publieke sector, is het aannemelijk dat ook een deel van hun digitale toepassingen onvoldoende toegankelijk is. Dit vormt een fundamenteel probleem, aangezien ontoegankelijke digitale platformen een directe impact hebben op gelijke onderwijskansen.
 
+Deze problematiek is bijzonder relevant wanneer men rekening houdt met het feit dat ongeveer één op de vijf Belgen leeft met een handicap. Daarnaast blijkt dat 16,3\% van de leeftijdsgroep van 16 tot 24 jaar, die een aanzienlijk deel van de studentenpopulatie vertegenwoordigt, leeft met een beperking \autocite{EuropeseUnie2025}. Dit benadrukt dat digitale toegankelijkheid geen randfenomeen is, maar een essentiële voorwaarde om een substantiële gebruikersgroep volwaardig te laten participeren aan het hoger onderwijs.
+
+Binnen het opleidingsonderdeel Real-life Integrated Software Engineering (RISE) werd samen met een team een proof-of-concept (POC) ontwikkeld voor een toekomstige HOGENT-campusapplicatie. Deze POC werd na evaluatie door docenten en de IT-dienst van HOGENT geselecteerd als de best uitgewerkte en meest geschikte basis voor verder onderzoek. Tijdens het ontwikkelproces werd echter duidelijk dat digitale toegankelijkheid niet structureel werd meegenomen. Hierdoor vormt deze POC een concrete en realistische casus om te onderzoeken hoe toegankelijkheid technisch geïntegreerd kan worden in mobiele applicaties binnen een onderwijscontext.
+
+De huidige versie van de applicatie werd tijdens de ontwikkeling niet systematisch geëvalueerd aan de hand van de WCAG-richtlijnen, waardoor onduidelijk is in welke mate studenten met beperkingen drempels ervaren tijdens het gebruik ervan. Dit gebrek aan inzicht houdt bovendien het risico in dat de applicatie niet voldoet aan de reeds geldende Europese toegankelijkheidsregelgeving. De Europese Richtlijn (EU) 2016/2102 verplicht publieke instellingen, waaronder onderwijsinstellingen, om hun websites en mobiele applicaties conform te maken aan de WCAG-richtlijnen \autocite{EURlex2016}. Ook de Belgische overheid benadrukt dat alle publieke digitale platformen aan deze normen moeten voldoen \autocite{BelgianWebAccessibility2025}. Het niet naleven van deze regelgeving kan leiden tot structurele uitsluiting van studenten met beperkingen en tot het niet voldoen aan wettelijke verplichtingen.
+
+Dit leidt tot de centrale onderzoeksvraag van deze bachelorproef: Hoe kan de bestaande HOGENT-campusapplicatie technisch worden uitgebreid met digitale toegankelijkheidsrichtlijnen voor gebruikers met beperkingen, en welke invloed heeft deze implementatie op de performantie en de algemene gebruikservaring van de applicatie? Deze hoofdvraag kan opgesplitst worden in volgende deelvragen:
 \begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
+    \item In welke mate voldoet de huidige versie van de HOGENT-campusapplicatie (POC) aan de WCAG-richtlijnen?
+    \item Welke front-end componenten zijn momenteel ontoegankelijk volgens de WCAG-richtlijnen?
+    \item Welke toegankelijkheidsaanpassingen kunnen op UI- en componentniveau technisch worden doorgevoerd om aan deze richtlijnen te voldoen?
+    \item Welke meetbare verschillen in performantie treden op vóór en na de implementatie van toegankelijkheidsfunctionaliteiten, zowel aan front-end als aan back-end zijde?
+    \item Welke testmethoden en evaluatiecriteria zijn geschikt om zowel toegankelijkheid als performantie van de applicatie objectief te meten?
 \end{itemize}
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+Om deze onderzoeksvragen te beantwoorden, wordt in deze bachelorproef eerst onderzocht hoe toegankelijk de bestaande versie is volgens de WCAG-richtlijnen. Vervolgens worden gerichte toegankelijkheidsfuncties geïmplementeerd en wordt nagegaan welke invloed deze verbeteringen hebben op de performantie en algemene gebruikservaring van de applicatie. De vergelijking tussen de huidige en de uitgebreidere versie vormt de kern van dit onderzoekstraject.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+Deze bachelorproef richt zich op IT-professionals binnen onderwijsinstellingen en in het bijzonder op softwareontwikkelaars die verantwoordelijk zijn voor het ontwerp en onderhoud van mobiele campusapplicaties. Zij hebben nood aan concrete technische richtlijnen en praktijkgerichte inzichten om digitale toegankelijkheid duurzaam te integreren zonder een negatieve impact op performantie of gebruikerservaring.
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
-
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+Het beoogde eindresultaat van dit onderzoek is een toegankelijkere en technisch verbeterde versie van de bestaande POC, aangevuld met een onderbouwd rapport met implementatierichtlijnen en aanbevelingen voor ontwikkelteams. Daarmee levert deze bachelorproef een praktische en relevante bijdrage aan de ontwikkeling van duurzame, inclusieve en performante mobiele applicaties binnen het hoger onderwijs.
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+mobiele applicaties een steeds grotere rol spelen in het academische leven van studenten. Ze ondersteunen studieplanning, communicatie, administratieve processen en de toegang tot lesmateriaal. Wanneer mobiele applicaties echter onvoldoende toegankelijk zijn, ontstaan er structurele drempels voor studenten met een beperking, wat hun deelname aan het onderwijs bemoeilijkt. Aangezien onderwijsinstellingen deel uitmaken van de publieke sector, zijn zij bovendien wettelijk verplicht om hun digitale diensten toegankelijk te maken. Deze literatuurstudie bespreekt de huidige inzichten omtrent digitale toegankelijkheid van mobiele apps
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+\subsection{Toegankelijkheidsrichtlijnen}
+Digitale toegankelijkheid wordt internationaal vormgegeven door de Web Content Accessibility Guidelines (WCAG), ontwikkeld door het World Wide Web Consortium. De WCAG beschrijven hoe digitale toepassingen bruikbaar worden voor mensen met uiteenlopende beperkingen \autocite{W3C_WCAG2025}. Ze vormen de basis voor beleidskaders zoals de Europese toegankelijkheidsrichtlijn \autocite{EURlex2016}.
+De richtlijnen zijn opgebouwd rond vier principes: waarneembaar, bedienbaar, begrijpelijk en robuust. Deze worden vertaald naar concrete succescriteria die ontwikkelaars helpen inclusieve interfaces te ontwerpen \autocite{Vlaanderen_WCAG_nodate}.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+\subsubsection{Waarneembaar}
+Het principe waarneembaar houdt in dat alle informatie en interface-elementen toegankelijk moeten zijn via meerdere zintuigen. Digitale content mag dus niet afhankelijk zijn van één enkele waarnemingsvorm. Voorbeelden zijn het voorzien van alternatieve teksten voor afbeeldingen, ondertiteling voor video’s en voldoende kleurcontrast. Hierdoor kunnen gebruikers met visuele of auditieve beperkingen informatie op een gelijkwaardige manier verwerken. Vooral bij mobiele applicaties, waar schermruimte beperkt is, speelt correcte toepassing van waarneembaarheidscriteria een cruciale rol.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+\subsubsection{Bedienbaar}
+Bedienbaarheid verwijst naar het feit dat gebruikers elke functie in de applicatie moeten kunnen bedienen, ongeacht hun motorische mogelijkheden. Dit betekent onder andere dat alle interacties toegankelijk moeten zijn via toetsenbord- of schermlezerbediening, dat interactieve elementen voldoende groot zijn en dat de interface voorspelbaar reageert. Ook moeten gebruikers voldoende tijd krijgen voor acties, zoals aan formulieren of tijdsgebonden interacties. Voor mobiele apps is dit essentieel omdat gebruikers vaak afhankelijk zijn van touch-interacties, die niet voor iedereen haalbaar zijn.
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+\subsubsection{Begrijpelijk}
+Onder begrijpelijk verstaat WCAG dat zowel de content als de bediening van de applicatie helder en consistent moeten zijn. De interface moet voorspelbaar werken en taalgebruik moet duidelijk zijn. Fouten moeten bovendien begrijpelijk worden uitgelegd, samen met suggesties om ze te corrigeren. Dit principe ondersteunt vooral gebruikers met cognitieve beperkingen, maar in de praktijk verhoogt het de gebruiksvriendelijkheid voor alle gebruikers.
+
+\subsubsection{Robuust}
+
+Robuustheid betekent dat de applicatie voldoende technologisch stabiel moet zijn om te werken met verschillende soorten gebruikerssoftware, waaronder schermlezers en andere ondersteunende technologieën. De onderliggende code moet semantisch correct en toekomstbestendig zijn, zodat de applicatie ook blijft functioneren wanneer technologieën evolueren. Dit is belangrijk voor mobiele apps, omdat ze draaien op uiteenlopende toestellen, besturingssystemen en versies van assistive tools.
+Door deze vier principes toe te passen, wordt niet alleen voldaan aan wettelijke verplichtingen, maar wordt ook een inclusieve gebruikerservaring gecreëerd die de toegankelijkheid én de algemene kwaliteit van mobiele applicaties aanzienlijk verhoogt.
+
+\subsection{Toegankelijkheidsproblemen in applicaties}
+Uit praktijkonderzoek en documentatie over veelvoorkomende toegankelijkheidsproblemen bij digitale toepassingen blijkt dat mobiele applicaties nog steeds aanzienlijke barrières bevatten voor gebruikers die afhankelijk zijn van hulpmiddelen zoals toetsenbordbesturing, schermlezers of alternatieve navigatiemethoden. Hoewel WCAG-richtlijnen een duidelijk kader bieden, tonen deze bronnen aan dat problemen zich in alle vier de toegankelijkheidsprincipes blijven voordoen \autocite{ACM_Praktijkvoorbeelden_nodate}.
+
+Binnen het principe waarneembaarheid gaat het vaak mis wanneer informatie te sterk afhankelijk is van visuele kenmerken. Hyperlinks die enkel via kleur herkenbaar zijn, blijven bijvoorbeeld onopgemerkt bij kleurenblinde of slechtziende gebruikers. Ook iconische knoppen zonder tekstalternatief zoals menu- of winkelwagenpictogrammen die worden door schermlezers niet herkend, waardoor essentieel navigatiegedrag verloren gaat. Bovendien leiden laag kleurcontrast en slecht schaalbare typografie ertoe dat inhoud moeilijk leesbaar wordt, vooral wanneer gebruikers moeten inzoomen.
+
+Op het vlak van bedienbaarheid ervaren gebruikers vooral problemen wanneer apps onvoldoende rekening houden met toetsenbordnavigatie of alternatieve bedieningsvormen zoals spraakbesturing of switch control. In veel gevallen zijn knoppen of formuliervelden niet bereikbaar via tab-navigatie,of voeren elementen onverwachte acties uit. Een typisch praktijkvoorbeeld is vastlopen in een automatisch suggestievenster bij zoekvelden, waardoor de gebruiker niet verder kan navigeren. Ook ontbreekt in sommige apps een duidelijke focusindicator, waardoor niet zichtbaar is welk element geselecteerd is.
+
+Bij begrijpelijkheid ontstaan problemen wanneer mobiele apps onverwachte veranderingen uitvoeren of onvoldoende duidelijke structurele aanwijzingen bieden. Bijvoorbeeld wanneer een filteroptie onmiddellijk een pagina herlaadt zonder waarschuwing of wanneer navigatiecomponenten zoals contactinformatie van plaats veranderen. Formuliervelden zonder duidelijke labels, foutmeldingen die geen uitleg geven en taalinstellingen die niet correct zijn ingesteld, maken de ervaring nog complexer en kunnen ervoor zorgen dat gebruikers transacties niet kunnen afronden.
+
+Ten slotte ontstaan robuustheidsproblemen wanneer applicaties niet goed communiceren met hulptechnologie. Als visuele veranderingen zoals het toevoegen van een product aan een winkelmandje die niet worden aangekondigd, missen gebruikers belangrijke feedback. Formulieren die geen auto-aanvulopties ondersteunen vormen bovendien een extra belasting, vooral voor gebruikers met motorische beperkingen. Daarnaast tonen praktijkervaringen aan dat zogenaamde accessibility overlays, die de toegankelijkheid automatisch proberen te verbeteren, vaak storingen veroorzaken en soms juist de werking van assistieve technologie onderbreken.
+Gezamenlijk illustreren deze bevindingen dat toegankelijkheidsproblemen in mobiele applicaties hardnekkig blijven voorkomen. Vooral in contexten zoals het hoger onderwijs, waar applicaties essentieel zijn voor communicatie en studiebeheer kunnen dergelijke tekortkomingen van studenten aanzienlijk belemmeren.
+
+\subsection{Oplossingsstrategieën voor toegankelijkheidsproblemen}
+De literatuur toont aan dat veel toegankelijkheidsproblemen in mobiele applicaties vermeden kunnen worden wanneer toegankelijkheid niet wordt beschouwd als een laatstadiumcontrole, maar als een geïntegreerd onderdeel van het volledige ontwikkelproces. Internationale richtlijnen zoals WCAG bieden hierbij het basiskader \autocite{W3C_WCAG2025}, terwijl toegankelijke ontwerpprincipes en praktijkvoorbeelden uit onder meer Vlaanderen.be, MDN en toegankelijkheidsonderzoek richting geven aan effectieve oplossingen.
+
+Een centrale strategie is het ontwerpen van volledig bedienbare interfaces. Mobiele applicaties moeten bruikbaar zijn met schermlezers, spraakbesturing, toetsenborden en switch control. Dit vereist duidelijke labels, logische navigatiestructuren en alternatieven voor complexe touchgebaren \autocite{Apple_Accessibility_nodate, Android_Accessibility2025}.
+
+Begrijpelijkheid kan worden bevorderd door consistente lay-out, duidelijke feedback, informatieve foutmeldingen en correcte taalinstellingen. Dit zorgt ervoor dat schermlezers de juiste structuur en inhoud kunnen overbrengen.
+
+Robuustheid vereist semantisch correcte code, duidelijke hiërarchieën en betrouwbare aankondigingen van dynamische wijzigingen. Richtlijnen van onder meer MDN en W3C bieden hiervoor uitgebreide ondersteuning \autocite{MDN_Accessibility_nodate, W3C_WCAG2025}.
+
+Ten slotte bevelen verschillende bronnen aan om zowel geautomatiseerde als manuele tests te combineren. Tools zoals Lighthouse, AXE DevTools en WAVE detecteren snel problemen met contrast, labels, semantiek of performance. Manuele testen met schermlezers, toetsenborden en vergrotingssoftware blijven noodzakelijk om realistische gebruiksproblemen op te sporen \autocite{BelgianWebAccessibility2025}. Deze gecombineerde aanpak wordt algemeen gezien als de meest effectieve methode om duurzame toegankelijkheid te realiseren.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -53,8 +92,6 @@ Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle no
 % \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
-
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
