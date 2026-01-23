@@ -53,7 +53,7 @@ Het eindresultaat van dit onderzoek is een toegankelijkere en technisch verbeter
 mobiele applicaties een steeds grotere rol spelen in het academische leven van studenten. Ze ondersteunen studieplanning, communicatie, administratieve processen en de toegang tot lesmateriaal. Wanneer mobiele applicaties echter onvoldoende toegankelijk zijn, ontstaan er structurele drempels voor studenten met een beperking, wat hun deelname aan het onderwijs bemoeilijkt. Aangezien onderwijsinstellingen deel uitmaken van de publieke sector, zijn zij bovendien wettelijk verplicht om hun digitale diensten toegankelijk te maken. Deze literatuurstudie bespreekt de huidige inzichten omtrent digitale toegankelijkheid van mobiele apps
 
 \subsection{Toegankelijkheidsrichtlijnen}
-Digitale toegankelijkheid wordt internationaal vormgegeven door de Web Content Accessibility Guidelines (WCAG), ontwikkeld door het World Wide Web Consortium. De WCAG beschrijven hoe digitale toepassingen bruikbaar worden voor mensen met uiteenlopende beperkingen \autocite{W3C_WCAG2025}. Ze vormen de basis voor beleidskaders zoals de Europese toegankelijkheidsrichtlijn \autocite{EURlex2016}.
+Digitale toegankelijkheid wordt internationaal vormgegeven door de Web Content Accessibility Guidelines (WCAG), ontwikkeld door het World Wide Web Consortium. De WCAG beschrijven hoe digitale toepassingen bruikbaar worden voor mensen met uiteenlopende beperkingen \autocite{W3C_WCAG2025}. Ze vormen de basis voor beleidskaders zoals de Europese toegankelijkheidsrichtlijn.
 De richtlijnen zijn opgebouwd rond vier principes: waarneembaar, bedienbaar, begrijpelijk en robuust. Deze worden vertaald naar concrete succescriteria die ontwikkelaars helpen inclusieve interfaces te ontwerpen \autocite{Vlaanderen_WCAG_nodate}.
 
 \subsubsection{Waarneembaar}
@@ -71,7 +71,7 @@ Robuustheid betekent dat de applicatie voldoende technologisch stabiel moet zijn
 Door deze vier principes toe te passen, wordt niet alleen voldaan aan wettelijke verplichtingen, maar wordt ook een inclusieve gebruikerservaring gecreëerd die de toegankelijkheid én de algemene kwaliteit van mobiele applicaties aanzienlijk verhoogt.
 
 \subsection{Toegankelijkheidsproblemen in applicaties}
-Uit praktijkonderzoek en documentatie over veelvoorkomende toegankelijkheidsproblemen bij digitale toepassingen blijkt dat mobiele applicaties nog steeds aanzienlijke barrières bevatten voor gebruikers die afhankelijk zijn van hulpmiddelen zoals toetsenbordbesturing, schermlezers of alternatieve navigatiemethoden. Hoewel WCAG-richtlijnen een duidelijk kader bieden, tonen deze bronnen aan dat problemen zich in alle vier de toegankelijkheidsprincipes blijven voordoen \autocite{ACM_Praktijkvoorbeelden_nodate}.
+Uit praktijkonderzoek en documentatie over veelvoorkomende toegankelijkheidsproblemen bij digitale toepassingen blijkt dat mobiele applicaties nog steeds aanzienlijke barrières bevatten voor gebruikers die afhankelijk zijn van hulpmiddelen zoals toetsenbordbesturing, schermlezers of alternatieve navigatiemethoden \autocite{chandarana2024}. Hoewel WCAG-richtlijnen een duidelijk kader bieden, tonen deze bronnen aan dat problemen zich in alle vier de toegankelijkheidsprincipes blijven voordoen \autocite{ACM_Praktijkvoorbeelden_nodate}.
 
 Binnen het principe waarneembaarheid gaat het vaak mis wanneer informatie te sterk afhankelijk is van visuele kenmerken. Hyperlinks die enkel via kleur herkenbaar zijn, blijven bijvoorbeeld onopgemerkt bij kleurenblinde of slechtziende gebruikers. Ook iconische knoppen zonder tekstalternatief zoals menu- of winkelwagenpictogrammen die worden door schermlezers niet herkend, waardoor essentieel navigatiegedrag verloren gaat. Bovendien leiden laag kleurcontrast en slecht schaalbare typografie ertoe dat inhoud moeilijk leesbaar wordt, vooral wanneer gebruikers moeten inzoomen.
 
@@ -91,7 +91,38 @@ Begrijpelijkheid kan worden bevorderd door consistente lay-out, duidelijke feedb
 
 Robuustheid vereist semantisch correcte code, duidelijke hiërarchieën en betrouwbare aankondigingen van dynamische wijzigingen. Richtlijnen van onder meer MDN en W3C bieden hiervoor uitgebreide ondersteuning \autocite{MDN_Accessibility_nodate, W3C_WCAG2025}.
 
-Ten slotte bevelen verschillende bronnen aan om zowel geautomatiseerde als manuele tests te combineren \autocite{ZhyrovaEtAl2022}. Tools zoals Lighthouse, AXE DevTools en WAVE detecteren snel problemen met contrast, labels, semantiek of performance. Manuele testen met schermlezers, toetsenborden en vergrotingssoftware blijven noodzakelijk om realistische gebruiksproblemen op te sporen \autocite{BelgianWebAccessibility2025}. Deze gecombineerde aanpak wordt algemeen gezien als de meest effectieve methode om duurzame toegankelijkheid te realiseren.
+\subsection{Testtools voor digitale toegankelijkheid}
+
+Effectieve testing van digitale toegankelijkheid is cruciaal om mobiele en webapplicaties bruikbaar te maken voor alle gebruikers, inclusief personen met fysieke, sensorische of cognitieve beperkingen. \textcite{ZhyrovaEtAl2022} benadrukken dat hoewel internationale richtlijnen zoals WCAG 2.1 een duidelijk kader bieden, de standaardisering van toegankelijkheidstesten nog vaak ontbreekt. 
+
+\subsubsection{Doel en aanpak van toegankelijkheidstesten}
+Toegankelijkheidstesten hebben tot doel mogelijke barrières voor gebruikers met beperkingen te identificeren. De aanpak begint met het definiëren van de doelgroep, inclusief specifieke beperkingen en het analyseren van hun interactie met de applicatie. Voor cognitieve beperkingen zoals dyslexie, dementie, epilepsie of aandachtstekorten, dienen specifieke ontwerp- en testcriteria gehanteerd te worden. Bijvoorbeeld:
+\begin{itemize}
+    \item Epilepsie: vermijden van knipperende content en repetitieve patronen.
+    \item Dementie: eenvoudige en duidelijke interfaces met korte instructies en visuele ondersteuning.
+    \item Dyslexie: mogelijkheid tot audio-ondersteuning van content en feedback bij formulierinvoer.
+    \item Aandachtstekort: overzichtelijke en korte content met directe foutmeldingen.
+\end{itemize}
+Door deze criteria te volgen, kan een applicatie inclusiever worden ontwikkeld en getest.
+
+\subsubsection{Geautomatiseerde en manuele testtools}
+\textcite{ZhyrovaEtAl2022} stellen dat een combinatie van geautomatiseerde en manuele tests noodzakelijk is voor een volledig beeld van toegankelijkheid. Veelgebruikte tools zijn onder andere:
+\begin{itemize}
+    \item \textbf{Lighthouse, AXE DevTools, WAVE:} detecteren snel contrastproblemen, ontbrekende labels en semantische fouten.
+    \item \textbf{Schermlezers, toetsenbordnavigatie en vergrotingssoftware:} simuleren het gebruik door personen met visuele of motorische beperkingen.
+\end{itemize}
+Automatische tools bieden efficiëntie en objectieve metingen, terwijl manuele testen de daadwerkelijke gebruikservaring van personen met beperkingen evalueren.
+
+\subsubsection{Checklist-gebaseerde evaluatie}
+Naast tools is een checklist-aanpak aanbevolen, gebaseerd op WCAG. Deze checklist kan onder andere bestaan uit \autocite{ZhyrovaEtAl2022}:
+\begin{itemize}
+    \item \textbf{Layouttesten:} consistentie van navigatie, locatie en grootte van interface-elementen, lettertype en contrast.
+    \item \textbf{Functionele testen:} toetsen van buttons, invoervelden, zoekfuncties, login-formulieren, kalenders en foutmeldingen op toegankelijkheid.
+    \item \textbf{Compatibiliteitstesten:} controle van de werking met assistieve technologieën zoals schermlezers, inclusief ondersteuning voor cognitieve beperkingen.
+    \item \textbf{Lokalisatietesten:} correctie van vertalingen, aanpassing van fonts en zoekfunctionaliteiten voor meertalige gebruikers.
+\end{itemize}
+
+Door deze systematische aanpak worden zowel structurele als gebruikservaringsproblemen geïdentificeerd, waardoor applicaties toegankelijker worden voor een brede doelgroep.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
