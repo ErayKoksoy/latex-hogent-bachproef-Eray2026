@@ -7,45 +7,114 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+% Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+% Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+% \textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+% Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{grail.jpg}
+%   \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
+% \end{figure}
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+% \begin{listing}
+%   \begin{minted}{python}
+%     import pandas as pd
+%     import seaborn as sns
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+%     penguins = sns.load_dataset('penguins')
+%     sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+%   \end{minted}
+%   \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
+% \end{listing}
 
-\lipsum[7-20]
+% \lipsum[7-20]
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+% \begin{table}
+%   \centering
+%   \begin{tabular}{lcr}
+%     \toprule
+%     \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
+%     $\alpha$         & $\beta$          & $\gamma$         \\
+%     \midrule
+%     A                & 10.230           & a                \\
+%     B                & 45.678           & b                \\
+%     C                & 99.987           & c                \\
+%     \bottomrule
+%   \end{tabular}
+%   \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
+% \end{table}
 
+In dit hoofdstuk wordt de theoretische basis gelegd voor het onderzoek naar digitale toegankelijkheid binnen de HOGENT-campusapp met een specifieke focus op studenten met een beperking. Deze literatuurstudie bouwt verder op de probleemstelling en onderzoeksvragen en brengt de belangrijkste concepten, modellen en richtlijnen samen die nodig zijn om het onderzoek inhoudelijk te onderbouwen.
+
+\section{Digitale toegankelijkheid en regelgeving}
+\label{sec:toegankelijkheid-regelgeving}
+
+Digitale toegankelijkheid is niet langer louter een ethische verplichting, maar een wettelijke eis geworden in veel landen. Deze sectie behandelt de juridische en regelgevingscontext rondom webtoegankelijkheid, met specifieke aandacht voor hoger onderwijs in Europa en België.
+
+\subsection{Toegankelijkheid in hoger onderwijs}
+\label{subsec:toegankelijkheid-onderwijs}
+
+Hoger onderwijs speelt een cruciale rol in het bereikbaar maken van kennis voor iedereen, ongeacht fysieke of cognitieve beperkingen. Veel studenten met beperkingen vertrouwen op digitale hulpmiddelen en toegankelijke interfaces om effectief deel te nemen aan hun studie.
+
+% Hier meer specifieke informatie over HOGENT-context toevoegen
+De HOGENT-campusapp is een belangrijk hulpmiddel voor studenten om hun academische leven te beheren. Dit maakt toegankelijkheid voor alle gebruikers essentieel om inclusiviteit te waarborgen. Studenten met visuele, auditieve, motorische of cognitieve beperkingen moeten gelijk kunnen gebruikmaken van deze applicatie.
+
+\subsection{Juridisch kader}
+\label{subsec:juridisch-kader}
+
+\subsubsection{Richtlijn (EU) 2016/2102}
+
+De Europese Richtlijn 2016/2102, ook wel de ``Web Accessibility Directive'' genoemd, vormt de juridische basis voor digitale toegankelijkheid in de Europese Unie. Deze richtlijn verplicht openbare organisaties, waaronder onderwijsinstellingen, om hun websites en mobiele applicaties toegankelijk te maken voor personen met beperkingen. \autocite{EU20162102}
+
+De richtlijn stelt minimale conformiteitsnormen vast gebaseerd op de WCAG 2.1 AA-standaarden (zie verderop in dit hoofdstuk) en bepaalt dat organisaties transparantie moeten bieden over hun toegankelijkheidsstatus door middel van een ``accessibility statement''. Naleving van deze richtlijn is verplicht sinds september 2020.
+
+\subsubsection{Belgische implementatie}
+
+België heeft de Europese richtlijn geïmplementeerd in nationale wetgeving. Onderwijsinstellingen zoals HOGENT zijn verplicht om te voldoen aan de toegankelijkheidseisen vastgesteld in de richtlijn. Dit betekent dat de HOGENT-campusapp en alle gerelateerde digitale diensten moeten voldoen aan WCAG 2.1 AA-normen. \autocite{Belgium2020accessibility}
+
+Naleving wordt gemonitord door regelgevingsinstanties, en niet-compliance kan leiden tot administratieve boetes en wettelijke gevolgen.
+
+\subsection{Rol van het World Wide Web Consortium}
+\label{subsec:w3c-rol}
+
+Het World Wide Web Consortium (W3C) is de internationale standaardisatie-organisatie die verantwoordelijk is voor het ontwikkelen van webstandaarden, waaronder webtoegankelijkheid. Het W3C werkt samen met universiteiten, bedrijven en organisaties die zich inzetten voor een inclusief internet.
+
+De Web Accessibility Initiative (WAI), een onderdeel van het W3C, heeft de Web Content Accessibility Guidelines (WCAG) ontwikkeld—de meest geaccepteerde internationale standaard voor webtoegankelijkheid. Deze richtlijnen worden gebruikt als basis voor regelgeving in talrijke landen.
+
+\subsection{Web Content Accessibility Guidelines (WCAG)}
+\label{subsec:wcag}
+
+De WCAG zijn een set van richtlijnen ontworpen om webinhoud toegankelijker te maken voor personen met beperkingen. De huidige versie, WCAG 2.1, biedt aanbevelingen op drie conformiteitsniveaus. \autocite{W3CWCAG21}
+
+\subsubsection{De vier principes (POUR)}
+
+WCAG is gebaseerd op vier fundamentele principes, samengevat als POUR: \autocite{W3CWCAG21}
+
+\begin{enumerate}
+    \item \textbf{Perceivable (Waarneembaar):} Informatie en gebruikersinterfacecomponenten moeten waarneembaar zijn voor gebruikers. Dit betekent dat gebruikers de inhoud moeten kunnen zien of horen.
+    
+    \item \textbf{Operable (Bedienbaar):} Gebruikersinterfacecomponenten en navigatie moeten bedienbaar zijn. Alle functies moeten beschikbaar zijn via het toetsenbord, niet alleen via muiskliks.
+    
+    \item \textbf{Understandable (Begrijpelijk):} Informatie en bedieningsvereisten van de gebruikersinterface moeten begrijpelijk zijn. Dit omvat duidelijke taal, voorspelbare navigatie en ondersteuning bij het voorkomen van fouten.
+    
+    \item \textbf{Robust (Robuust):} Inhoud moet robuust genoeg zijn zodat het kan worden geïnterpreteerd door een groot scala aan gebruikershulpmiddelen, waaronder ondersteunende technologieën.
+\end{enumerate}
+
+\subsubsection{Conformiteitsniveaus (A, AA, AAA)}
+
+WCAG definieert drie conformiteitsniveaus, elk met een toenemende mate van streng toegankelijkheidseisen: \autocite{W3CWCAG21}
+
+\begin{description}
+    \item[Niveau A:] Het laagste conformiteitsniveau. Dit biedt basistoegankelijkheid voor veel gebruikers met beperkingen. Bijvoorbeeld: alle afbeeldingen hebben alt-tekst.
+    
+    \item[Niveau AA:] Dit is het meest aanbevolen niveau voor webtoegankelijkheid en is de standaard waaraan wettelijke verplichtingen doorgaans voldoen. Het adresseert de meest voorkomende en significante toegankelijkheidsproblemen.
+    
+    \item[Niveau AAA:] Het hoogste conformiteitsniveau. Dit is gericht op het bieden van de uitgebreidste toegankelijkheid, maar kan in praktijk uitdagend zijn voor alle website-types.
+\end{description}
+
+De EU-richtlijn 2016/2102 vereist minimaal WCAG 2.1 AA conformiteit voor openbare organisaties, waaronder onderwijsinstellingen zoals HOGENT.
