@@ -220,4 +220,68 @@ Een combinatie van deze methoden levert de meest grondige evaluatie op. Geautoma
 %-----------------------------------------------------------------------------
 %-----------------------------------------------------------------------------
 
+\section{Veelvoorkomende toegankelijkheidsproblemen in mobiele campusapps}
+\label{sec:veelvoorkomende-problemen}
+
+Op basis van de WCAG-principes en eerdere bevindingen uit toegankelijkheidsonderzoek kunnen in een mobiele campusapp een aantal terugkerende knelpunten verwacht worden. Deze sectie beschrijft welke problemen waarschijnlijk voorkomen in de huidige HOGENT-campusapp en waarom ze een directe impact hebben op studenten met een beperking.
+
+\subsection{Waarneembaarheid}
+\label{subsec:problemen-waarneembaarheid}
+
+Binnen het principe waarneembaarheid treden problemen op wanneer informatie enkel visueel wordt aangeboden of onvoldoende contrast heeft. In een campuscontext kan dit zich uiten in:
+
+\begin{itemize}
+    \item iconen in navigatie of meldingen zonder duidelijke tekstuele alternatieven
+    \item onvoldoende kleurcontrast tussen tekst en achtergrond, zeker bij statuslabels of knoppen
+    \item belangrijke informatie die uitsluitend via kleur wordt gecommuniceerd (bijv. rood = dringend, groen = in orde)
+    \item beperkte schaalbaarheid van tekst en interface-elementen bij grotere letterinstellingen
+\end{itemize}
+
+Voor studenten met een visuele beperking leidt dit tot gemiste informatie, foutieve interpretaties en extra cognitieve belasting. Volgens WCAG moet alle inhoud via meerdere waarnemingskanalen beschikbaar zijn \autocite{W3CWCAG21}.
+
+\subsection{Bedienbaarheid}
+\label{subsec:problemen-bedienbaarheid}
+
+Problemen rond bedienbaarheid ontstaan wanneer gebruikers niet alle functionaliteit kunnen bereiken of uitvoeren met alternatieve invoermethoden. In een mobiele campusapp zijn typische risico's:
+
+\begin{itemize}
+    \item interactieve elementen met te kleine aanraakzones
+    \item onlogische focusvolgorde bij externe toetsenbordnavigatie of switch control
+    \item ontbrekende of nauwelijks zichtbare focusindicatoren
+    \item complexe gestures zonder alternatief (bijv. enkel swipe-acties)
+    \item tijdsgebonden interacties zonder mogelijkheid tot verlenging
+\end{itemize}
+
+Dit kan ertoe leiden dat studenten bepaalde kerntaken (zoals agenda raadplegen, lokalen zoeken, meldingen openen of formulieren indienen) niet zelfstandig kunnen afronden. Een consistente, volledig bedienbare interactielaag is daarom essentieel \autocite{W3CWCAG21}.
+
+\subsection{Begrijpelijkheid}
+\label{subsec:problemen-begrijpelijkheid}
+
+Binnen begrijpelijkheid gaat het vaak mis wanneer de interface onvoorspelbaar gedrag vertoont of foutfeedback onvoldoende duidelijk is. In de praktijk zijn onder meer volgende problemen waarschijnlijk:
+
+\begin{itemize}
+    \item inconsistente navigatiepatronen tussen schermen
+    \item vage of technische foutmeldingen zonder concrete oplossingsstappen
+    \item formulieren met ontbrekende labels of onduidelijke verplichte velden
+    \item onverwachte contextwissels (bijv. automatische herlading of schermwissel zonder waarschuwing)
+    \item taalinstellingen die niet overeenkomen met de taal van de inhoud
+\end{itemize}
+
+Voor studenten met cognitieve of leergerelateerde beperkingen verhogen zulke problemen de kans op fouten en frustratie, zelfs wanneer de onderliggende functionaliteit op zich correct werkt.
+
+\subsection{Robuustheid}
+\label{subsec:problemen-robuustheid}
+
+Robuustheid heeft betrekking op compatibiliteit met ondersteunende technologie en verschillende platformimplementaties. In mobiele apps manifesteren problemen zich vaak als:
+
+\begin{itemize}
+    \item ontbrekende of foutieve semantische aanduiding van UI-componenten
+    \item elementen die door schermlezers niet als knop, link of invoerveld worden herkend
+    \item dynamische updates (zoals succesmeldingen of validatiefouten) die niet worden aangekondigd
+    \item inconsistente toegankelijkheid tussen iOS- en Android-versies van dezelfde functie
+\end{itemize}
+
+Wanneer robuustheid ontbreekt, wordt de app onbetrouwbaar voor gebruikers van VoiceOver, TalkBack of andere assistieve technologie. Dit ondermijnt niet alleen de bruikbaarheid, maar ook de duurzaamheid van de oplossing op langere termijn \autocite{W3CWCAG21}.
+
+Samengevat tonen deze vier categorieën aan dat toegankelijkheidsproblemen in een campusapp niet louter technische details zijn, maar directe barrières voor inclusieve onderwijsdeelname. Deze verwachte knelpunten vormen daarom de basis voor de audit en prioritering in het verdere onderzoek.
 
