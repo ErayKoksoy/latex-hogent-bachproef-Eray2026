@@ -61,7 +61,7 @@ Digitale toegankelijkheid is niet langer louter een ethische verplichting, maar 
 
 Hoger onderwijs speelt een cruciale rol in het bereikbaar maken van kennis voor iedereen, ongeacht fysieke of cognitieve beperkingen. Veel studenten met beperkingen vertrouwen op digitale hulpmiddelen en toegankelijke interfaces om effectief deel te nemen aan hun studie.
 
-% Hier meer specifieke informatie over HOGENT-context toevoegen
+% meer info
 De HOGENT-campusapp is een belangrijk hulpmiddel voor studenten om hun academische leven te beheren. Dit maakt toegankelijkheid voor alle gebruikers essentieel om inclusiviteit te waarborgen. Studenten met visuele, auditieve, motorische of cognitieve beperkingen moeten gelijk kunnen gebruikmaken van deze applicatie.
 
 \subsection{Juridisch kader}
@@ -69,9 +69,9 @@ De HOGENT-campusapp is een belangrijk hulpmiddel voor studenten om hun academisc
 
 \subsubsection{Richtlijn (EU) 2016/2102}
 
-De Europese Richtlijn 2016/2102, ook wel de ``Web Accessibility Directive'' genoemd, vormt de juridische basis voor digitale toegankelijkheid in de Europese Unie. Deze richtlijn verplicht openbare organisaties, waaronder onderwijsinstellingen, om hun websites en mobiele applicaties toegankelijk te maken voor personen met beperkingen. \autocite{EU20162102}
+De Europese Richtlijn 2016/2102, ook wel de ``Web Accessibility Directive'' genoemd, vormt de juridische basis voor digitale toegankelijkheid in de Europese Unie. Deze richtlijn verplicht openbare organisaties, waaronder onderwijsinstellingen, om hun websites en mobiele applicaties toegankelijk te maken voor personen met beperkingen.
 
-De richtlijn stelt minimale conformiteitsnormen vast gebaseerd op de WCAG 2.1 AA-standaarden (zie verderop in dit hoofdstuk) en bepaalt dat organisaties transparantie moeten bieden over hun toegankelijkheidsstatus door middel van een ``accessibility statement''. Naleving van deze richtlijn is verplicht sinds september 2020.
+De richtlijn stelt minimale conformiteitsnormen vast gebaseerd op de WCAG 2.1 AA-standaarden en bepaalt dat organisaties transparantie moeten bieden over hun toegankelijkheidsstatus door middel van een ``accessibility statement''. Naleving van deze richtlijn is verplicht sinds september 2020.
 
 \subsubsection{Belgische implementatie}
 
@@ -118,3 +118,106 @@ WCAG definieert drie conformiteitsniveaus, elk met een toenemende mate van stren
 \end{description}
 
 De EU-richtlijn 2016/2102 vereist minimaal WCAG 2.1 AA conformiteit voor openbare organisaties, waaronder onderwijsinstellingen zoals HOGENT.
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+
+\section{Evaluatie van Digitale Toegankelijkheid}
+\label{sec:evaluatie-toegankelijkheid}
+
+Het evalueren van de toegankelijkheid van mobiele applicaties vereist zowel geautomatiseerde als handmatige benaderingen. Deze sectie beschrijft de beschikbare evaluatiemethoden en tools die kunnen worden ingezet om de conformiteit met WCAG-richtlijnen te meten en te verbeteren.
+
+\subsection{Geautomatiseerde tools}
+\label{subsec:geautomatiseerde-tools}
+
+Geautomatiseerde evaluatietools kunnen snel en systematisch een groot deel van de WCAG-eisen controleren. Ze detecteren technische problemen zoals contrastfouten, ontbrekende alt-teksten en semantische HTML-fouten. Deze tools vormen een belangrijk eerste screeningsmiddel om toegankelijkheidsproblemen op schaal te identificeren.
+
+\subsubsection{Accessibility Insights}
+
+Accessibility Insights is een open-source tool van Microsoft die webapplicaties en mobiele apps analyseert op toegankelijkheidsproblemen. De tool combineert geautomatiseerde controles met handmatige evaluatiegidsen en biedt real-time feedback over WCAG 2.1 AA en WCAG 2.2 conformiteit. \autocite{MicrosoftAccessibilityInsights2024}
+
+Accessibility Insights beschikt over twee hoofdmodi: ``FastPass'' voor snelle geautomatiseerde scans en ``Assessment'' voor grondiger onderzoek. Voor mobiele applicaties biedt de tool specifieke richtlijnen voor native Android- en iOS-apps, wat direct relevant is voor de HOGENT-campusapp. De tool markeert automatisch problematische elementen en stelt concrete verbeteringen voor, wat het debugproces aanzienlijk versnelt.
+
+\subsubsection{Lighthouse}
+
+Lighthouse is een open-source audittool van Google die vooral bekend is voor webtoetsen, maar ook toegankelijkheidsevaluaties uitvoert. De tool genereert geautomatiseerde audits voor performance, toegankelijkheid, best practices en zoekmachineoptimalisatie. \autocite{GoogleLighthouse2024}
+
+Lighthouse kan zowel lokaal als online worden gebruikt en biedt een score van 0 tot 100 voor de categorie ``Accessibility''. Hoewel de tool vooral gericht is op webapplicaties, kan het ook werden ingesteld voor de evaluatie van mobiele responsive interfaces. De tool detecteert onder meer contrastproblemen, ontbrekende form-labels en fouten in ARIA-implementatie.
+
+\subsubsection{axe DevTools}
+
+axe DevTools is een browser-gebaseerde tool van Deque die geïntegreerd kan worden in populaire browsers en ontwikkelingomgevingen. De tool voert realtime scans uit op pagina's en identificeert WCAG 2.1 AA en AAA problemen direct in de browser. \autocite{DequueAxeDevTools2024}
+
+axe DevTools is bijzonder waardevol voor iteratieve ontwikkelingscycli, aangezien het directe feedback geeft op code-wijzigingen. De tool integreert ook met geautomatiseerde test-suites, waardoor continuous integration pipelines kunnen controleren op toegankelijkheidsproblemen voordat code in productie gaat.
+
+Daarnaast bestaat er een mobiele variant, axe Mobile, die native iOS- en Android-applicaties kan testen. Dit is essentieel voor het evalueren van de HOGENT-campusapp.
+
+\subsection{Handmatige evaluatie}
+\label{subsec:handmatige-evaluatie}
+
+Hoewel geautomatiseerde tools waardevol zijn, kunnen zij slechts ongeveer 30-40\% van alle toegankelijkheidsproblemen detecteren. Handmatige evaluatie is onmisbaar om gebruikerservaring, contextgerelateerde problemen en subtiele barrières te identificeren die geautomatiseerde tools missen. \autocite{Teran2021}
+
+\subsubsection{Toetsenbordnavigatie}
+
+Het testen van toetsenbordnavigatie omvat het navigeren door alle interactieve elementen van de applicatie zonder gebruik te maken van aanraking of muis. Dit omvat:
+
+\begin{itemize}
+    \item Alle functies moeten bereikbaar zijn via Tab en Shift+Tab toetsen;
+    \item De volgorde van toetsenbordfocus moet logisch en voorspelbaar zijn;
+    \item Elementen moeten een zichtbare focusindicator hebben;
+    \item Geen ``toetsenbordvals'' waar gebruikers vast kunnen lopen.
+\end{itemize}
+
+Voor mobiele apps is dit vooral relevant voor externe toetsenbordbediening en voor gebruikers die switch control (schakelcontrole) gebruiken. Het testproces omvat het doorlopen van alle schermen en het verifiëren dat alle interacties toegankelijk zijn. Dit proces is arbeidsintensief maar essentieel voor nauwkeurige beoordeling.
+
+\subsubsection{Schermlezers}
+
+Schermlezers zetten visuele informatie om in audio of braille-weergave. Veel gebruikers met visuele beperkingen verlaten zich op deze technologie. Het testen van screenreader-compatibiliteit omvat:
+
+\begin{itemize}
+    \item Het gebruiken van native screenreaders (NVDA op Windows, JAWS, VoiceOver op iOS, TalkBack op Android);
+    \item Het verifiëren dat alle inhoud correct wordt voorgelezen;
+    \item Het controleren of semantische structuur juist is gemarkeerd (headings, lists, buttons, etc.);
+    \item Het testen van ARIA-labels en beschrijvingen;
+    \item Het verifiëren dat dynamische inhaalduistering correct wordt aangekondigd.
+\end{itemize}
+
+Voor de HOGENT-campusapp is dit vooral relevant gezien veel studenten met visuele beperkingen VoiceOver (iOS) of TalkBack (Android) gebruiken. Het is essentieel te testen of alle informatie en functionaliteit bereikbaar is via deze tools zonder verlies van context of functionaliteit.
+
+\subsubsection{Gebruikersonderzoek}
+
+Gebruikersonderzoek met echte personen die geholpen worden door ondersteunende technologieën biedt kwalitatieve inzichten die geautomatiseerde en andere handmatige tests niet kunnen leveren. Dit omvat:
+
+\begin{itemize}
+    \item Sessies met gebruikers die gebruik maken van schermlezers, spraakbesturing of andere hulpmiddelen;
+    \item Observatie van frustraties, werkstromingsonderbreking en onverwachte problemen;
+    \item Het verzamelen van kwalitatieve feedback over de algehele gebruikerservaring;
+    \item Het valideren van praktische bruikbaarheid in realistische scenario's.
+\end{itemize}
+
+Voor de HOGENT-campusapp kunnen dergelijke sessies worden uitgevoerd met studenten met beperkingen, wat directe inzichten oplevert in de praktische drempels die zij ervaren. Dit vormt een waardevolle aanvulling op geautomatiseerde en handmatige evaluaties.
+
+\subsection{Beperkingen van evaluatiemethoden}
+\label{subsec:beperkingen-evaluatiemethoden}
+
+Ondanks de beschikbaarheid van tools en methoden hebben alle evaluatiemethoden inherente beperkingen:
+
+\begin{description}
+    \item[Geautomatiseerde tools:] Kunnen slechts ongeveer 30-40\% van alle WCAG-problemen detecteren. Zij kunnen geen contextuele problemen, gebruikerservaring of semantische kwesties beoordelen die verder gaan dan eenvoudige syntactische fouten. Valse positieven kunnen ook voorkomen. \autocite{Teran2021}
+    
+    \item[Toetsenbordtesten:] Testers kunnen ervaringen van gebruikers die een bepaalde motorische controle hebben onverwacht missen. Bovendien kunnen bepaalde interface-patterns moeilijk via toetsenbord getest worden.
+    
+    \item[Screenreader-testen:] Vereisen deskundige testers met sterke screenreader-vaardigheden. Testers kunnen onopgemerkt gaan voorbij aan subtiele problemen die regelmatige screenreader-gebruikers wel tegenkomen. Verschillende schermlezers kunnen ook ander gedrag vertonen op dezelfde applicatie.
+    
+    \item[Gebruikersonderzoek:] Is kostbaar en tijdrovend, waardoor het aantal deelnemers beperkt kan zijn. Deelnemers kunnen niet representatief zijn voor alle gebruikers met beperkingen. Ethische aspecten en toestemmingseisen vereisen zorgvuldige planning.
+\end{description}
+
+Een combinatie van deze methoden levert de meest grondige evaluatie op. Geautomatiseerde tools bieden efficiëntie en schaalvergroting, terwijl handmatige evaluatie en gebruikersonderzoek diepgaande inzichten leveren in werkelijke bruikbaarheidsproblemen.
+
+
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
+
+
