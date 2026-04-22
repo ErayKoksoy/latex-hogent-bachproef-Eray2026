@@ -25,7 +25,34 @@ Figuur~\ref{fig:homepage-campusapp} toont de homepage van het afgewerkte product
 \subsection{Nulmeting via Lighthouse-audit}
 \label{subsec:nulmeting-lighthouse}
 
-% TODO: Voer een Lighthouse-audit uit en documenteer de resultaten
+Voor de nulmeting werd een Lighthouse-audit uitgevoerd op de webapplicatie. Omdat de onderzoeksvraag focust op gebruikservaring en technische kwaliteit, zijn vooral performantie en toegankelijkheid relevant.
+
+\subsubsection{Performantie}
+De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gemeten waarden zijn:
+
+\begin{itemize}
+\item First Contentful Paint (FCP): 7.0 s
+\item Largest Contentful Paint (LCP): 7.5 s
+\item Total Blocking Time (TBT): 9790 ms
+\item Speed Index: 10.4 s
+\item Cumulative Layout Shift (CLS): 0.079
+\end{itemize}
+
+De betekenis van deze metingen is als volgt:
+
+\begin{itemize}
+\item \textbf{First Contentful Paint (FCP)}: tijd tot het eerste zichtbare element (tekst of afbeelding) op het scherm verschijnt.
+\item \textbf{Largest Contentful Paint (LCP)}: tijd tot het grootste zichtbare inhoudselement in beeld is gerenderd.
+\item \textbf{Total Blocking Time (TBT)}: totale duur waarin de main thread geblokkeerd is door lange taken (taken langer dan 50 ms), tussen FCP en Time to Interactive.
+\item \textbf{Speed Index}: maat voor hoe snel de zichtbare inhoud van de pagina stap voor stap wordt opgebouwd.
+\item \textbf{Cumulative Layout Shift (CLS)}: maat voor onverwachte verschuivingen van elementen tijdens het laden van de pagina.
+\end{itemize}
+
+%Deze resultaten wijzen op trage initiële rendering en zware main-thread blokkering, wat een negatieve impact heeft op de ervaren snelheid en interactiviteit van de applicatie.
+
+\subsubsection{Toegankelijkheid}
+Naast performantie is toegankelijkheid eveneens relevant voor dit onderzoek, omdat de campusapp bruikbaar moet zijn voor een zo breed mogelijke groep studenten, inclusief gebruikers met specifieke noden. De Lighthouse-audit voor toegankelijkheid wordt in de volgende iteratie aangevuld met de score en concrete verbeterpunten.
+
 
 \subsection{Nulmeting via manuele test}
 \label{subsec:nulmeting-manueel}
