@@ -28,15 +28,23 @@ Figuur~\ref{fig:homepage-campusapp} toont de homepage van het afgewerkte product
 Voor de nulmeting werd een Lighthouse-audit uitgevoerd op de webapplicatie. Omdat de onderzoeksvraag focust op gebruikservaring en technische kwaliteit, zijn vooral performantie en toegankelijkheid relevant.
 
 \subsubsection{Performantie}
-De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gemeten waarden zijn:
+De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gemeten waarden per pagina zijn:
 
-\begin{itemize}
-\item First Contentful Paint (FCP): 7.0 s
-\item Largest Contentful Paint (LCP): 7.5 s
-\item Total Blocking Time (TBT): 9790 ms
-\item Speed Index: 10.4 s
-\item Cumulative Layout Shift (CLS): 0.079
-\end{itemize}
+\begin{table}[h]
+\centering
+\caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
+\label{tab:lighthouse-per-pagina}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Pagina} & \textbf{FCP (s)} & \textbf{LCP (s)} & \textbf{TBT (ms)} & \textbf{Speed Index (s)} & \textbf{CLS} \\
+\hline
+Homepagina & 7.0 & 7.5 & 9790 & 10.4 & 0.079 \\
+Nieuwspagina & 5.1 & 92.1 & 9320 & 11.1 & 0.078 \\
+Campuspagina & 5.7 & 6.3 & 9440 & 13.4 & 0.08 \\
+Lessenroosterpagina & 7.1 & 7.7 & 18680 & 8.0 & 0 \\
+\hline
+\end{tabular}
+\end{table}
 
 De betekenis van deze metingen is als volgt:
 
@@ -70,7 +78,7 @@ De nulmeting voor toegankelijkheid geeft een Lighthouse-score van \textbf{86/100
 
 De belangrijkste gedetecteerde problemen zijn:
 
-\begin{itemize}
+\begin{itemize}     
 \item \textbf{Buttons do not have an accessible name}: meerdere knoppen (o.a. menu- en quicklinkknoppen) hebben geen bruikbare naam voor screenreaders.
 \item \textbf{Links do not have a discernible name}: sommige links (o.a. icoonlinks zoals studentenkaart/notificaties) hebben geen duidelijke, voorleefbare linktekst.
 \item \textbf{Insufficient color contrast}: op verschillende plaatsen is het contrast tussen tekst en achtergrond te laag, wat de leesbaarheid vermindert.
