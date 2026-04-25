@@ -15,7 +15,7 @@ De kernfuncties van de applicatie focussen op de dagelijkse noden van studenten.
 
 Figuur~\ref{fig:homepage-campusapp} toont de homepage van het afgewerkte product als representatief startscherm van de applicatie.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.42\textwidth]{App-homepagina.png}
 	\caption[Homepagina van de campusapp]{Homepagina van het afgewerkte product, gebruikt als representatief startscherm van de campusapp.}
@@ -42,6 +42,8 @@ Homepagina & 7.0 & 7.5 & 9790 & 10.4 & 0.079 \\
 Nieuwspagina & 5.1 & 92.1 & 9320 & 11.1 & 0.078 \\
 Campuspagina & 5.7 & 6.3 & 9440 & 13.4 & 0.08 \\
 Lessenroosterpagina & 7.1 & 7.7 & 18680 & 8.0 & 0 \\
+Deadlinepagina & 5.4 & 5.9 & 19200 & 5.4 & 0.08 \\
+Notificatiepagina & 5.5 & 6.0 & 10530 & 7.8 & 0.079 \\
 \hline
 \end{tabular}
 \end{table}
@@ -74,17 +76,88 @@ Deze nulmeting dient in dit onderzoek als \textbf{baseline}. Zo kan worden nageg
 \subsubsection{Toegankelijkheid}
 Naast performantie is toegankelijkheid eveneens relevant voor dit onderzoek, omdat de campusapp bruikbaar moet zijn voor een zo breed mogelijke groep studenten, inclusief gebruikers met specifieke noden.
 
-De nulmeting voor toegankelijkheid geeft een Lighthouse-score van \textbf{86/100}. Als interpretatiekader wordt gehanteerd: \textbf{goed} ($90$--$100$), \textbf{matig} ($50$--$89$) en \textbf{slecht} ($0$--$49$). De huidige score bevindt zich dus in de \textbf{matige} zone, dicht bij goed, maar met duidelijke verbeterpunten.
+De nulmeting voor toegankelijkheid wordt per pagina gerapporteerd. Als interpretatiekader wordt gehanteerd: \textbf{goed} ($90$--$100$), \textbf{matig} ($50$--$89$) en \textbf{slecht} ($0$--$49$).
 
-De belangrijkste gedetecteerde problemen zijn:
+\begin{table}[h]
+\centering
+\caption[Toegankelijkheidsscore per pagina]{Overzicht van de Lighthouse-toegankelijkheidsscore per pagina.}
+\label{tab:toegankelijkheid-score-per-pagina}
+\begin{tabular}{lcc}
+\hline
+\textbf{Pagina} & \textbf{Totale score (/100)} & \textbf{Zone} \\
+\hline
+Homepagina & 86 & Matig \\
+Nieuwspagina & 89 & Matig \\
+Campuspagina & 90 & Goed \\
+Lessenroosterpagina & 86 & Matig \\
+Deadlinepagina & 82 & Matig \\
+Notificatiepagina & 87 & Matig \\
+\hline
+\end{tabular}
+\end{table}
 
-\begin{itemize}     
-\item \textbf{Buttons do not have an accessible name}: meerdere knoppen (o.a. menu- en quicklinkknoppen) hebben geen bruikbare naam voor screenreaders.
-\item \textbf{Links do not have a discernible name}: sommige links (o.a. icoonlinks zoals studentenkaart/notificaties) hebben geen duidelijke, voorleefbare linktekst.
-\item \textbf{Insufficient color contrast}: op verschillende plaatsen is het contrast tussen tekst en achtergrond te laag, wat de leesbaarheid vermindert.
+
+
+De belangrijkste gedetecteerde problemen per pagina zijn:
+
+\paragraph{Homepagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\item \textbf{Insufficient color contrast}: het kleurcontrast is op meerdere plaatsen onvoldoende.
 \end{itemize}
 
-Daarnaast werden in de audit \textbf{19 controles geslaagd} en \textbf{38 controles niet van toepassing} gerapporteerd.
+\paragraph{Nieuwspagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\item \textbf{Insufficient color contrast}: het kleurcontrast is op meerdere plaatsen onvoldoende.
+\end{itemize}
+
+\paragraph{Campuspagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\end{itemize}
+
+\paragraph{Lessenroosterpagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\end{itemize}
+
+\paragraph{Deadlinepagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Select elements do not have associated label elements}: select-elementen hebben geen bijbehorende labels, waardoor ze moeilijk te gebruiken zijn voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\item \textbf{Insufficient color contrast}: het kleurcontrast is op meerdere plaatsen onvoldoende.
+\end{itemize}
+
+\paragraph{Notificatiepagina}
+\begin{itemize}
+\item \textbf{Buttons do not have an accessible name}: interactieve knoppen hebben geen bruikbare naam voor screenreaders.
+\item \textbf{Links do not have a discernible name}: sommige links hebben geen duidelijke, voorleesbare linktekst.
+\item \textbf{Insufficient color contrast}: het kleurcontrast is op meerdere plaatsen onvoldoende.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption[Auditcontroles per pagina]{Overzicht van geslaagde en niet-van-toepassing controles per pagina.}
+\label{tab:toegankelijkheid-controles-per-pagina}
+\begin{tabular}{lcc}
+\hline
+\textbf{Pagina} & \textbf{Geslaagd} & \textbf{Niet van toepassing} \\
+\hline
+Homepagina & 19 & 38 \\
+Nieuwspagina & 24 & 33 \\
+Campuspagina & 20 & 38 \\
+Lessenroosterpagina & 15 & 43 \\
+Deadlinepagina & 20 & 36 \\
+Notificatiepagina & 22 & 35 \\
+\hline
+\end{tabular}
+\end{table}
 
 Deze meting wordt als \textbf{toegankelijkheidsbaseline} gebruikt. De heraudit gebeurt pas op het einde, na het doorvoeren van alle toegankelijkheidsverbeteringen, zodat het totale verschil tussen de originele en verbeterde versie eenduidig kan worden geëvalueerd.
 
@@ -92,9 +165,23 @@ Deze meting wordt als \textbf{toegankelijkheidsbaseline} gebruikt. De heraudit g
 \subsection{Nulmeting via manuele test}
 \label{subsec:nulmeting-manueel}
 
-% TODO: Beschrijf de manuele testresultaten
+Naast de geautomatiseerde audit werd een korte manuele toegankelijkheidstest uitgevoerd. De test focuste op toetsenbordnavigatie en op de bruikbaarheid met screenreaders.
+
+\subsubsection{WebAIM / Tab-navigatie}
+De toetsenbordtest gebeurde zonder muis, met \texttt{Tab} en \texttt{Shift+Tab}, om na te gaan welke elementen effectief focus krijgen en dus bruikbaar zijn voor toetsenbordgebruikers.
+
+Over bijna alle pagina's heen is hetzelfde patroon zichtbaar: bij het navigeren met \texttt{Tab} worden vooral de menu-items bereikt, aangevuld met een beperkt aantal extra elementen. Voor een groot deel van de overige inhoud wordt geen zichtbare focus getoond, waardoor die onderdelen in de praktijk moeilijk of niet via het toetsenbord bedienbaar zijn.
+
+Daarnaast blijkt dat activeren met \texttt{Enter} slechts bij een beperkt aantal elementen werkt en zelfs niet bij menu-items. Dit wijst op inconsistent toetsenbordgedrag in de huidige implementatie.
+
+
+\subsubsection{Screenreaders}
+Voor de screenreadergerichte controle werd NVDA gebruikt. Tijdens deze test werd opnieuw met \texttt{Tab} genavigeerd om na te gaan welke elementen door de screenreader effectief worden aangekondigd. De meting toont dat NVDA vooral interactieve elementen met een bruikbare toegankelijke naam voorleest (zoals knoptekst, linktekst of een \texttt{aria}-naam). Elementen zonder focus, louter visuele tekstblokken of icon-only componenten zonder toegankelijke naam worden in de praktijk overgeslagen. Daarnaast werden chips binnen \texttt{MudChipContainer} wel correct voorgelezen, omdat deze als interactieve controls worden gerenderd en een tekstuele naam bevatten. De screenreaderervaring is echter inconsistent: veel links hebben geen duidelijke toegankelijke naam en worden daardoor niet (of onvoldoende) voorgelezen. Deze bevindingen sluiten aan bij de Lighthouse-audit en bevestigen dat ontbrekende of onduidelijke namen de screenreaderbediening minder betrouwbaar en minder efficiënt maken.
+
+\paragraph{Interpretatie}
+Deze manuele test bevestigt dat de huidige versie van de app belangrijke beperkingen heeft op vlak van keyboard accessibility. Het ontbreken van een consistente en zichtbare focus op interactieve elementen vormt een reële drempel voor gebruikers die niet met een muis navigeren. De resultaten worden daarom mee opgenomen als \textbf{baseline} voor de latere verbeteringen.
 
 \subsection{Samenvatting van de beginsituatie}
 \label{subsec:samenvatting-beginsituatie}
 
-% TODO: Vat de belangrijkste bevindingen samen
+De nulmeting toont aan dat de campusapp in haar initiële staat duidelijke werkpunten heeft op het vlak van toegankelijkheid. De Lighthouse-audit geeft matige toegankelijkheidsscores, met vooral problemen rond ontoegankelijke knoppen, links zonder duidelijke naam en onvoldoende kleurcontrast. De manuele toetsenbord- en screenreadertests bevestigen deze bevindingen: veel interactieve elementen missen een zichtbare focus of toegankelijke naam, wat de bruikbaarheid voor gebruikers met specifieke noden beperkt. De performantiemeting wordt in dit onderzoek gebruikt als technische baseline, zodat na de implementaties objectief kan worden nagegaan in welke mate de performantie verandert. Samen vormen deze resultaten een duidelijk referentiepunt voor de evaluatie van de verbeterde versie.
