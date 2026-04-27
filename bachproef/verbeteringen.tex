@@ -1,0 +1,97 @@
+\chapter{Verbeteringen}
+\label{ch:verbeteringen}
+
+\section{Probleemanalyse en implementatie van verbeteringen}
+\label{sec:probleemanalyse-verbeteringen}
+
+Na de nulmeting werd de oorspronkelijke campusapp geanalyseerd op basis van de geautomatiseerde Lighthouse-audit en de manuele toetsenbord- en screenreadercontrole. Uit die analyse bleek dat de belangrijkste knelpunten zich concentreerden rond vier terugkerende thema's: ontbrekende of onduidelijke toegankelijke namen, onvoldoende kleurcontrast, beperkte toetsenbordbediening en ontbrekende labels bij formulier- en selectiecomponenten.
+
+De verbeteringen werden niet willekeurig doorgevoerd, maar stap voor stap geprioriteerd op basis van twee criteria. Ten eerste werd gekeken naar de impact op de gebruikerservaring: problemen die meerdere schermen of veelgebruikte interacties troffen, kregen voorrang. Ten tweede werd rekening gehouden met de technische haalbaarheid, zodat wijzigingen die snel en structureel konden worden doorgevoerd eerst werden aangepakt. Op die manier kon de grootste toegankelijkheidswinst worden behaald binnen de beschikbare implementatietijd.
+
+\subsection{Overzicht van de belangrijkste issues}
+\label{subsec:overzicht-belangrijkste-issues}
+
+De nulmeting bracht een aantal terugkerende problemen aan het licht. In de eerste plaats kregen verschillende interactieve elementen geen bruikbare toegankelijke naam mee, waardoor screenreaders ze niet of slechts gedeeltelijk konden aankondigen. Dat geld zowel voor knoppen als voor links en icon-only componenten.
+
+Daarnaast bleek het kleurcontrast op meerdere plaatsen onvoldoende. Vooral teksten op gekleurde achtergronden, statuslabels en bepaalde knoppen zaten onder de aanbevolen contrastdrempel, wat de leesbaarheid bemoeilijkte voor gebruikers met een visuele beperking of een verminderd contrastzicht.
+
+Een derde probleem betrof de toetsenbordnavigatie. Niet alle interactieve elementen waren bereikbaar via het toetsenbord en de focusvolgorde was niet overal logisch of zichtbaar. Hierdoor was de app minder bruikbaar voor gebruikers die geen muis of touchscreen kunnen gebruiken.
+
+Tot slot werden select-elementen en andere invoercomponenten niet consequent gekoppeld aan een zichtbaar of programmatic label. Dat maakte formulieren moeilijker te begrijpen en zorgde voor extra hinder in combinatie met screenreaders.
+
+\subsection{Prioriteiten}
+\label{subsec:prioriteiten}
+
+De gevonden problemen werden geordend van hoogste naar laagste prioriteit. Problemen die de kernnavigatie of de belangrijkste interacties blokkeerden, kwamen bovenaan te staan. Daaronder vielen in het bijzonder de knoppen en links zonder toegankelijke naam, omdat die rechtstreeks invloed hebben op de basisbediening van de applicatie.
+
+De tweede prioriteit lag bij de toetsenbordbediening en zichtbare focusstaten. Een applicatie die visueel wel werkt maar via toetsenbord moeilijk bedienbaar is, blijft voor een belangrijke groep gebruikers praktisch ontoegankelijk.
+
+Een derde prioriteit vormden contrastproblemen en labelproblemen in formulieren. Deze issues zijn minder vaak volledig blokkerend, maar hebben wel een duidelijke impact op de leesbaarheid, de begrijpelijkheid en de algemene gebruikservaring.
+
+\begin{table}[h]
+\centering
+\caption[Prioritering van toegankelijkheidsproblemen]{Overzicht van de belangrijkste toegankelijkheidsproblemen en hun prioriteit.}
+\label{tab:prioritering-issues}
+\begin{tabular}{p{0.44\textwidth}p{0.18\textwidth}p{0.28\textwidth}}
+\hline
+\textbf{Issue} & \textbf{Prioriteit} & \textbf{Reden} \\
+\hline
+Knoppen en links zonder toegankelijke naam & Hoog & Blokkeren screenreadergebruik en basisnavigatie \\
+Toetsenbordfocus en focusvolgorde & Hoog & Essentieel voor niet-muisgebruikers \\
+Onvoldoende kleurcontrast & Middel & Vermindert leesbaarheid en visuele toegankelijkheid \\
+Ontbrekende labels bij select- en invoerelementen & Middel & Verstoort formuliergebruik en interpretatie \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Uitgevoerde verbeteringen}
+\label{subsec:uitgevoerde-verbeteringen}
+
+In deze sectie worden de verbeteringen effectief in het project doorgevoerd en technisch onderbouwd met codefragmenten. Per probleem wordt telkens het volgende patroon gebruikt:
+
+\begin{itemize}
+	\item \textbf{Probleem:} korte beschrijving van het concrete toegankelijkheidsissue;
+	\item \textbf{Implementatie:} welke wijziging in de code werd uitgevoerd;
+	\item \textbf{Codefragment:} relevante snippet(s) uit de effectieve codebasis (bij voorkeur voor/na);
+	\item \textbf{Verwacht effect:} welke verbetering dit oplevert voor toegankelijkheid en gebruikservaring.
+\end{itemize}
+
+De codefragmenten worden beperkt tot de essentie, zodat de link tussen issue en oplossing duidelijk blijft. Op die manier blijft dit hoofdstuk reproduceerbaar en kan de lezer elke verbetering inhoudelijk en technisch volgen.
+
+\subsubsection{Toegankelijke namen voor interactieve elementen}
+
+De eerste groep verbeteringen richt zich op knoppen, links en icon-only componenten zonder duidelijke naam. Waar nodig wordt zichtbare tekst toegevoegd of wordt een expliciete toegankelijke naam voorzien via geschikte componentattributen. Daardoor kunnen schermlezers correct aangeven wat een element doet, zonder dat de gebruiker de visuele context hoeft te raden.
+
+Deze aanpassing is belangrijk omdat een groot deel van de oorspronkelijke toegankelijkheidsproblemen rechtstreeks voortkomt uit ontbrekende naamgeving. Door dit structureel op te lossen, verbetert niet alleen de screenreaderervaring, maar wordt ook de semantische kwaliteit van de interface versterkt.
+
+\subsubsection{Verbeterde toetsenbordbediening en focus}
+
+De tweede focus ligt op de bedienbaarheid via het toetsenbord. Interactieve onderdelen worden nagelopen op focusbaarheid, volgorde en activering. Elementen die wel visueel aanwezig zijn maar geen focus ontvangen, worden aangepast zodat ze logisch kunnen worden bereikt met \texttt{Tab} en \texttt{Shift+Tab}.
+
+Bovendien wordt de zichtbaarheid van de focusstaat versterkt. Dat is belangrijk omdat gebruikers anders moeilijk kunnen inschatten welk element op dat moment actief is. Een duidelijke focusindicator verhoogt de oriëntatie en vermindert het risico op bedieningsfouten.
+
+\subsubsection{Contrast en visuele leesbaarheid}
+
+Een derde cluster van verbeteringen betreft het kleurcontrast. Teksten, iconen en belangrijke interface-elementen worden herbekeken zodat ze beter leesbaar zijn tegen hun achtergrond. Waar nodig worden kleuren bijgestuurd of wordt de visuele hiërarchie aangepast.
+
+Deze wijzigingen dragen bij aan de waarneembaarheid van de inhoud en zijn vooral relevant voor gebruikers met een laag zicht, kleurenblindheid of tijdelijke visuele beperkingen, bijvoorbeeld bij gebruik in felle omgevingen.
+
+\subsubsection{Labels en formulierstructuur}
+
+Voor select- en invoerelementen worden labels toegevoegd of correct gekoppeld aan de bijhorende controls. Daardoor kunnen screenreaders de functie van een veld beter uitleggen en wordt het invullen van formulieren minder foutgevoelig.
+
+Daarnaast wordt de semantische opbouw van de interface waar nodig verfijnd, zodat de structuur consistenter aansluit op de verwachtingen van ondersteunende technologieën.
+
+\subsection{Effect op toegankelijkheid en kwaliteit}
+\label{subsec:effect-toegankelijkheid-kwaliteit}
+
+De uitgevoerde verbeteringen hebben een directe impact op de dagelijkse bruikbaarheid van de campusapp. Gebruikers die vertrouwen op toetsenbordnavigatie of een screenreader kunnen nu een groter deel van de applicatie zelfstandig bedienen. Tegelijk verhoogt een consistente focus, duidelijke naamgeving en beter contrast ook de gebruiksvriendelijkheid voor gebruikers zonder specifieke beperking.
+
+De implementatie toont daarnaast aan dat toegankelijkheidsmaatregelen niet noodzakelijk een negatieve invloed hebben op de technische kwaliteit van de applicatie. Integendeel: betere semantiek, duidelijkere componentstructuur en minder ambiguïteit in de interface dragen vaak bij aan een robuustere codebasis.
+
+\subsection{Tussentijdse reflectie}
+\label{subsec:tussentijdse-reflectie}
+
+Tijdens de implementatie bleek dat sommige toegankelijkheidsproblemen relatief eenvoudig op componentniveau konden worden opgelost, terwijl andere issues een bredere herwerking van interactiepatronen vereisten. Vooral de structurele problemen rond focusbeheer en interactieve labels vroegen meer aandacht dan de visuele aanpassingen.
+
+De gekozen aanpak bevestigt het belang van prioritering. Door eerst de meest impactvolle drempels aan te pakken, kon de applicatie stap voor stap toegankelijker worden gemaakt zonder onnodig veel tijd te investeren in minder urgente optimalisaties. Deze tussenfase vormt daarmee de brug tussen de initiële analyse en de hertest in het volgende hoofdstuk.
