@@ -145,6 +145,7 @@ Deze aanpak zorgt ervoor dat de ARIA-logica losgekoppeld wordt van de UI-structu
 
 De effectieve generatie van de toegankelijke naam gebeurt centraal in de component:
 
+\begin{listing}[H]
 \begin{minted}{csharp}
 private string GetAriaForNews(NewsDto.Index article)
     => $"Nieuws: {article.Title}";
@@ -166,7 +167,6 @@ Door deze aanpak wordt de toegankelijke naam niet langer in de markup opgebouwd,
 \paragraph{Reflectie}
 
 Door het gebruik van dynamische ARIA-labels in combinatie met gecentraliseerde helpermethoden wordt de context van interactieve elementen aanzienlijk verbeterd. Enerzijds wordt snel extra informatie toegevoegd waar nodig, anderzijds wordt in complexere componenten gezorgd voor een schaalbare en onderhoudbare oplossing. Dit resulteert in een betere begrijpbaarheid en voorspelbaarheid voor screenreadergebruikers.
-
 
 \subsubsection{Verbeterde toetsenbordbediening en focus}
 
