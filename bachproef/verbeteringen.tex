@@ -26,7 +26,7 @@ De gevonden problemen werden geordend van hoogste naar laagste prioriteit. Probl
 
 De tweede prioriteit lag bij de toetsenbordbediening en zichtbare focusstaten. Een applicatie die visueel wel werkt maar via toetsenbord moeilijk bedienbaar is, blijft voor een belangrijke groep gebruikers praktisch ontoegankelijk.
 
-Een derde prioriteit vormden contrastproblemen en labelproblemen in formulieren. Deze issues zijn minder vaak volledig blokkerend, maar hebben wel een duidelijke impact op de leesbaarheid, de begrijpelijkheid en de algemene gebruikservaring.
+Een derde prioriteit vormden contrastproblemen. Deze issues zijn minder vaak volledig blokkerend, maar hebben wel een duidelijke impact op de leesbaarheid, de begrijpelijkheid en de algemene gebruikservaring.
 
 \begin{table}[h]
 \centering
@@ -36,10 +36,9 @@ Een derde prioriteit vormden contrastproblemen en labelproblemen in formulieren.
 \hline
 \textbf{Issue} & \textbf{Prioriteit} & \textbf{Reden} \\
 \hline
-Knoppen en links zonder toegankelijke naam & Hoog & Blokkeren screenreadergebruik en basisnavigatie \\
+Interactieve elementen zonder toegankelijke naam & Hoog & Blokkeren screenreadergebruik en basisnavigatie \\
 Toetsenbordfocus en focusvolgorde & Hoog & Essentieel voor niet-muisgebruikers \\
 Onvoldoende kleurcontrast & Middel & Vermindert leesbaarheid en visuele toegankelijkheid \\
-Ontbrekende labels bij select- en invoerelementen & Middel & Verstoort formuliergebruik en interpretatie \\
 \hline
 \end{tabular}
 \end{table}
@@ -75,12 +74,6 @@ Bovendien wordt de zichtbaarheid van de focusstaat versterkt. Dat is belangrijk 
 Een derde cluster van verbeteringen betreft het kleurcontrast. Teksten, iconen en belangrijke interface-elementen worden herbekeken zodat ze beter leesbaar zijn tegen hun achtergrond. Waar nodig worden kleuren bijgestuurd of wordt de visuele hiërarchie aangepast.
 
 Deze wijzigingen dragen bij aan de waarneembaarheid van de inhoud en zijn vooral relevant voor gebruikers met een laag zicht, kleurenblindheid of tijdelijke visuele beperkingen, bijvoorbeeld bij gebruik in felle omgevingen.
-
-\subsubsection{Labels en formulierstructuur}
-
-Voor select- en invoerelementen worden labels toegevoegd of correct gekoppeld aan de bijhorende controls. Daardoor kunnen screenreaders de functie van een veld beter uitleggen en wordt het invullen van formulieren minder foutgevoelig.
-
-Daarnaast wordt de semantische opbouw van de interface waar nodig verfijnd, zodat de structuur consistenter aansluit op de verwachtingen van ondersteunende technologieën.
 
 \subsection{Effect op toegankelijkheid en kwaliteit}
 \label{subsec:effect-toegankelijkheid-kwaliteit}
