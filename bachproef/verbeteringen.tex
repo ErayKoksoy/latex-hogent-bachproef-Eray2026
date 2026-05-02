@@ -157,6 +157,9 @@ private string GetAriaForEvent(EventDto.Index article)
     return $"Evenement: {article.Title}. Datum: {dateText}.";
 }
 \end{minted}
+\caption{Centrale generatie van toegankelijke namen voor nieuws- en eventitems.}
+\label{lst:aria-helper-methods}
+\end{listing}
 
 Door deze aanpak wordt de toegankelijke naam niet langer in de markup opgebouwd, maar centraal beheerd binnen de componentlogica. Dit verhoogt de consistentie van de gegenereerde ARIA-labels en maakt toekomstige aanpassingen eenvoudiger.
 
