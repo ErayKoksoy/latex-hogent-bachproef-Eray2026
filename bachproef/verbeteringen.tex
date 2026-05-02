@@ -46,22 +46,124 @@ Onvoldoende kleurcontrast & Middel & Vermindert leesbaarheid en visuele toeganke
 \subsection{Uitgevoerde verbeteringen}
 \label{subsec:uitgevoerde-verbeteringen}
 
-In deze sectie worden de verbeteringen effectief in het project doorgevoerd en technisch onderbouwd met codefragmenten. Per probleem wordt telkens het volgende patroon gebruikt:
+In deze sectie worden de geïdentificeerde toegankelijkheidsproblemen behandeld en de bijhorende verbeteringen toegelicht. 
+De verbeteringen worden gegroepeerd per type, zodat duidelijk wordt welke categorie van toegankelijkheidsproblemen werd aangepakt.
 
-\begin{itemize}
-	\item \textbf{Probleem:} korte beschrijving van het concrete toegankelijkheidsissue;
-	\item \textbf{Implementatie:} welke wijziging in de code werd uitgevoerd;
-	\item \textbf{Codefragment:} relevante snippet(s) uit de effectieve codebasis (bij voorkeur voor/na);
-	\item \textbf{Verwacht effect:} welke verbetering dit oplevert voor toegankelijkheid en gebruikservaring.
-\end{itemize}
-
-De codefragmenten worden beperkt tot de essentie, zodat de link tussen issue en oplossing duidelijk blijft. Op die manier blijft dit hoofdstuk reproduceerbaar en kan de lezer elke verbetering inhoudelijk en technisch volgen.
+Binnen elke categorie wordt telkens één representatief probleem stap voor stap uitgewerkt. 
+Daarbij wordt eerst het probleem geanalyseerd, vervolgens de oplossing toegelicht en geïllustreerd met een codefragment (voor en na), eventueel aangevuld met een ondersteunende afbeelding.
+Dezelfde aanpak werd nadien consistent toegepast op gelijkaardige elementen binnen de volledige applicatie.
 
 \subsubsection{Toegankelijke namen voor interactieve elementen}
 
-De eerste groep verbeteringen richt zich op knoppen, links en icon-only componenten zonder duidelijke naam. Waar nodig wordt zichtbare tekst toegevoegd of wordt een expliciete toegankelijke naam voorzien via geschikte componentattributen. Daardoor kunnen schermlezers correct aangeven wat een element doet, zonder dat de gebruiker de visuele context hoeft te raden.
+\paragraph{Probleem 1: Ontbrekende toegankelijke naam}
 
-Deze aanpassing is belangrijk omdat een groot deel van de oorspronkelijke toegankelijkheidsproblemen rechtstreeks voortkomt uit ontbrekende naamgeving. Door dit structureel op te lossen, verbetert niet alleen de screenreaderervaring, maar wordt ook de semantische kwaliteit van de interface versterkt.
+\paragraph{Probleemanalyse}
+
+Tijdens de nulmeting werd vastgesteld dat meerdere interactieve elementen geen toegankelijke naam hadden. 
+Dit kwam voornamelijk voor bij icon-gebaseerde knoppen en links/knoppen zonder zichtbare tekst.
+
+Voor schermlezers resulteert dit in aankondigingen zoals \textit{``onbenoemde knop''}, 
+waardoor gebruikers niet kunnen afleiden wat de functie van het element is.
+
+\paragraph{Oplossing}
+
+Om dit probleem op te lossen werd gebruikgemaakt van het \texttt{aria-label}-attribuut. 
+Dit attribuut voegt een beschrijvende naam toe die door screenreaders wordt voorgelezen.
+
+\begin{listing}[H]
+\begin{minted}{csharp}
+// Voor
+<a href="studentenkaart">
+	<i class="fa-regular fa-address-card"></i>
+</a>
+
+// Na
+<a href="studentenkaart" aria-label="Studentenkaart bekijken">
+	<i class="fa-regular fa-address-card"></i>
+</a>
+\end{minted}
+\caption{Toevoegen van een toegankelijke naam via \texttt{aria-label}.}
+\label{lst:aria-label}
+\end{listing}
+
+\paragraph{Reflectie}
+
+Door het toevoegen van een \texttt{aria-label} krijgt het element een duidelijke betekenis voor screenreaders. 
+Hoewel hier slechts één voorbeeld wordt weergegeven, werd deze oplossing systematisch toegepast op alle gelijkaardige interactieve elementen binnen de applicatie.
+
+\paragraph{Probleem 2: Onvoldoende context bij dynamische elementen}
+
+\paragraph{Probleemanalyse}
+
+Naast ontbrekende namen werd vastgesteld dat sommige interactieve elementen wel een naam hadden, maar dat deze onvoldoende context bood of niet specifiek genoeg was. In deze gevallen was een meer beschrijvende, dynamische naamgeving vereist, zoals bij het “volgende les”-element op de homepagina.
+
+\paragraph{Oplossing 1: dynamische aria-labels voor eenvoudige context}
+
+Voor relatief eenvoudige dynamische elementen werd het probleem opgelost door het gebruik van dynamische \texttt{aria-labels}. Hierbij wordt de toegankelijke naam opgebouwd op basis van beschikbare gegevens zoals titel, tijdstip en locatie, zodat de gebruiker een beter beeld krijgt van de inhoud.
+
+\begin{listing}[H]
+\begin{minted}{csharp}
+// Voor
+<a href="/lessenrooster/@Id">
+    <div class="class-schedule-block">
+        <DateBlock Date="@Start" MonthFormat="ddd" />
+        <div class="class-schedule-info">
+            <div>
+                <p>@Start.ToString("H.mm") - @End.ToString("H.mm")</p>
+                <p>@LessonType</p>
+            </div>
+            <h2>@Name</h2>
+            <p>@Room</p>
+        </div>
+    </div>
+</a>
+
+// Na
+<a href="/lessenrooster/@Id" aria-label="@($"Volgende les: {Name}. Begint om {Start:H.mm}. Lokaal {Room}.")">
+    ...
+</a>
+\end{minted}
+\caption{Gebruik van contextspecifieke aria-labels.}
+\label{lst:aria-label-dynamisch}
+\end{listing}
+
+\paragraph{Oplossing 2: gecentraliseerde ARIA-logica in dynamische componenten}
+
+Voor complexere dynamische componenten, zoals de nieuws- en eventcarousel op de homepagina, werd gekozen voor een meer gestructureerde en onderhoudbare aanpak. In plaats van de toegankelijke naam inline in de markup op te bouwen, wordt deze centraal gegenereerd via helpermethoden binnen de componentlogica.
+
+Deze aanpak zorgt ervoor dat de ARIA-logica losgekoppeld wordt van de UI-structuur, wat de leesbaarheid en onderhoudbaarheid van de code aanzienlijk verbetert.
+
+\begin{listing}[H]
+\begin{minted}{csharp}
+<a href="/nieuws-en-events/nieuws/@article.Id"
+   class="carousel-item-link"
+   aria-label="@GetAriaForNews(article)">
+\end{minted}
+\caption{Gebruik van een helpermethode voor het genereren van een toegankelijke naam in de nieuws-carousel.}
+\label{lst:aria-helper-news}
+\end{listing}
+
+De effectieve generatie van de toegankelijke naam gebeurt centraal in de component:
+
+\begin{minted}{csharp}
+private string GetAriaForNews(NewsDto.Index article)
+    => $"Nieuws: {article.Title}";
+
+private string GetAriaForEvent(EventDto.Index article)
+{
+    var dateText = article.Date.Date
+        .ToString("d MMMM", System.Globalization.CultureInfo.CurrentCulture);
+
+    return $"Evenement: {article.Title}. Datum: {dateText}.";
+}
+\end{minted}
+
+Door deze aanpak wordt de toegankelijke naam niet langer in de markup opgebouwd, maar centraal beheerd binnen de componentlogica. Dit verhoogt de consistentie van de gegenereerde ARIA-labels en maakt toekomstige aanpassingen eenvoudiger.
+
+\paragraph{Reflectie}
+
+Door het gebruik van dynamische ARIA-labels in combinatie met gecentraliseerde helpermethoden wordt de context van interactieve elementen aanzienlijk verbeterd. Enerzijds wordt snel extra informatie toegevoegd waar nodig, anderzijds wordt in complexere componenten gezorgd voor een schaalbare en onderhoudbare oplossing. Dit resulteert in een betere begrijpbaarheid en voorspelbaarheid voor screenreadergebruikers.
+
 
 \subsubsection{Verbeterde toetsenbordbediening en focus}
 
