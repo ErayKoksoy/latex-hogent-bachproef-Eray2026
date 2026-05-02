@@ -168,6 +168,55 @@ Door deze aanpak wordt de toegankelijke naam niet langer in de markup opgebouwd,
 
 Door het gebruik van dynamische ARIA-labels in combinatie met gecentraliseerde helpermethoden wordt de context van interactieve elementen aanzienlijk verbeterd. Enerzijds wordt snel extra informatie toegevoegd waar nodig, anderzijds wordt in complexere componenten gezorgd voor een schaalbare en onderhoudbare oplossing. Dit resulteert in een betere begrijpbaarheid en voorspelbaarheid voor screenreadergebruikers.
 
+\paragraph{Oplossing 3: Gebruik van \texttt{aria-expanded} en \texttt{aria-controls}}
+
+\paragraph{Probleemanalyse}
+
+Bij uitklapbare of toggle-menu's (zoals een hamburgermenu) is het voor screenreaders vaak onduidelijk of het menu open of gesloten is en welke elementen door de toggle worden bediend. Zonder expliciete ARIA-relaties missen gebruikers cruciale context: ze weten niet of een knop een paneel opent of het juist sluit, en welke content daarbij hoort.
+
+\paragraph{Oplossing}
+
+Het gebruik van \texttt{aria-expanded} maakt de huidige staat van een toggle expliciet ("true" of "false"), terwijl \texttt{aria-controls} verwijst naar het id van het element dat door de toggle wordt beheerd. Samen leggen deze attributen de relatie tussen controle en gecontroleerde content vast, wat zowel voor screenreaders als voor hulpmiddelen die de toegankelijkheidsboom analyseren zeer waardevol is. Belangrijke notities:
+
+- Zorg dat het id in \texttt{aria-controls} exact overeenkomt met het id van het gecontroleerde element.
+- Werk \texttt{aria-expanded} dynamisch bij wanneer de zichtbare staat verandert.
+- Overweeg focusbeheer binnen het geopende paneel zodat toetsenbordgebruikers niet vast komen te zitten.
+
+\begin{listing}[H]
+\begin{minted}{csharp}
+@using Microsoft.Extensions.Localization
+@using Blazor.WebAssembly.DynamicCulture
+@using Rise.Client.Resources.MainComponents.Navigation
+@inject IStringLocalizer<Navigation> Loc
+@inject IConfiguration Config
+@inherits NavBase
+
+<LanguageTrackProvider OnInitializeEvent="provider => provider.RegisterComponent(this)" />
+
+<div>
+    <MudIconButton Icon="@CurrentIcon"
+                   Color="Color.Inherit"
+                   OnClick="ToggleMenu"
+                   Class="hamburger-btn" 
+                   aria-label="Menu"
+                   aria-expanded="@(_isMenuOpen ? "true" : "false")"
+                   aria-controls="main-navigation" />
+    @if (_isMenuOpen)
+    {
+        <div class="hamburger-fullscreen" id="main-navigation">
+            ...
+        </div>
+    }
+</div>
+\end{minted}
+\caption{Gebruik van \texttt{aria-expanded} en \texttt{aria-controls} bij een hamburgermenu.}
+\label{lst:aria-expanded-controls}
+\end{listing}
+
+\paragraph{Reflectie}
+
+Door \texttt{aria-expanded} en \texttt{aria-controls} toe te voegen krijgt een screenreader-gebruiker directe feedback over de toggle-status en de relatie met de inhoud. Dit vermindert verwarring en verbetert de navigatie-ervaring, vooral bij dynamische componenten.
+
 \subsubsection{Verbeterde toetsenbordbediening en focus}
 
 De tweede focus ligt op de bedienbaarheid via het toetsenbord. Interactieve onderdelen worden nagelopen op focusbaarheid, volgorde en activering. Elementen die wel visueel aanwezig zijn maar geen focus ontvangen, worden aangepast zodat ze logisch kunnen worden bereikt met \texttt{Tab} en \texttt{Shift+Tab}.
