@@ -394,7 +394,94 @@ Deze geïntegreerde aanpak zorgt ervoor dat gebruikers zich vlot door de interfa
 
 Een derde cluster van verbeteringen betreft het kleurcontrast. Teksten, iconen en belangrijke interface-elementen worden herbekeken zodat ze beter leesbaar zijn tegen hun achtergrond. Waar nodig worden kleuren bijgestuurd of wordt de visuele hiërarchie aangepast.
 
-Deze wijzigingen dragen bij aan de waarneembaarheid van de inhoud en zijn vooral relevant voor gebruikers met een laag zicht, kleurenblindheid of tijdelijke visuele beperkingen, bijvoorbeeld bij gebruik in felle omgevingen.
+Deze wijzigingen dragen bij aan de waarneembaarheid van de inhoud en zijn vooral relevant voor gebruikers met een visuele beperking (kleurenblindheid of tijdelijke visuele beperkingen), bijvoorbeeld bij gebruik in felle omgevingen.
+
+\paragraph{Probleem: Onvoldoende kleurcontrast}
+
+\paragraph{Probleemanalyse}
+
+Tijdens de Lighthouse-audit en visuele beoordeling werd opgemerkt dat bepaalde tekstkleuken onvoldoende contrast hadden tegen hun achtergrond. Dit was vooral zichtbaar bij:
+
+\begin{itemize}
+	\item Statuslabels (bijvoorbeeld deadlines) met donkergrijze of bruine tinten (zoals \texttt{\#DBDBC1});
+	\item Nieuwskaart-datums met niet-contrastrijke kleuren (zoals \texttt{\#bd5b5b});
+	\item Andere metadata-elementen met grijze tinten tegen lichte achtergronden.
+\end{itemize}
+
+Deze kleuren zorgden ervoor dat teksten moeilijk leesbaar waren, vooral voor gebruikers met een verminderd zicht of bij gebruik in omgevingen met fel licht.
+
+\paragraph{Oplossing 1: Kleuren van elementaire componenten aanpassen}
+
+De eerste stap was het systematisch herzien en aanpassen van de CSS-kleurwaarden in componenten. Voor elementen met onvoldoende contrast werden de kleuren vervangen door varianten met beter contrast. Bijvoorbeeld:
+
+\begin{itemize}
+	\item Deadline-labels: grijze tint vervangen door een contrast-rieker alternatief;
+	\item Nieuwskaart-datums: rozeachtige tint (\texttt{\#bd5b5b}) geoptimaliseerd;
+	\item Cursustype-labels: grijze tinten vervangen.
+\end{itemize}
+
+Deze wijzigingen werden doorgevoerd in de component-scoped CSS-bestanden:
+
+\begin{listing}[H]
+\begin{minted}{css}
+/* VOORDIEN: onvoldoende contrast */
+.deadline-info p {
+  color: #DBDBC1;
+  margin-bottom: 0;
+}
+
+.news-card-date {
+  font-size: 0.85rem;
+  color: #bd5b5b;
+}
+
+.class-schedule-info p:first-of-type {
+  color: #DBDBC1; 
+}
+
+/* NADIEN: verbeterd contrast */
+.deadline-info p {
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.news-card-date {
+  font-size: 0.85rem;
+  color: #000000;
+}
+
+.class-schedule-info p:first-of-type {
+  color: #000000;
+}
+\end{minted}
+\caption{Voorbeelden van contrastverbeteringen in component-CSS.}
+\label{lst:contrast-colors}
+\end{listing}
+
+\paragraph{Oplossing 2: MudBlazor-componentkleuren aanpassen}
+
+Naast eigen componenten werden ook standaardcomponenten van MudBlazor aangepast. MudBlazor stelt standaard kleuren in die niet altijd optimaal contrast hebben. Een specifiek voorbeeld is het \texttt{.mud-alert-message} element, waarvan de standaard tekstkleur werd aangepast:
+
+Een concreet voorbeeld is de aanpassing van de tekstkleur binnen alertcomponenten:
+
+\begin{listing}[H]
+\begin{minted}{css}
+/* Alert-bericht kleur aanpassen voor beter contrast */
+.alert-section ::deep .mud-alert-message {
+  color: #1c4bba;  /* MUD-blauw, contrastrijker dan standaard */
+}
+\end{minted}
+\caption{Aanpassing van MudBlazor alert-kleur voor verbeterd contrast.}
+\label{lst:mud-alert-contrast}
+\end{listing}
+
+Door deze overschrijvingen wordt de standaard styling van MudBlazor aangepast naar een versie die beter aansluit bij de contrastvereisten van de applicatie.
+
+\paragraph{Reflectie}
+
+De combinatie van component-level kleurverbeteringen en MudBlazor-overschrijvingen zorgt voor een consistent contrastpatroon doorheen de interface. Dit verbetert niet alleen de leesbaarheid voor gebruikers met visuele beperkingen, maar verhoogt ook de algehele leesbaarheid en scherpheid van de gebruikersinterface.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Effect op toegankelijkheid en kwaliteit}
 \label{subsec:effect-toegankelijkheid-kwaliteit}
