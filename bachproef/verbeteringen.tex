@@ -168,19 +168,27 @@ Door deze aanpak wordt de toegankelijke naam niet langer in de markup opgebouwd,
 
 Door het gebruik van dynamische ARIA-labels in combinatie met gecentraliseerde helpermethoden wordt de context van interactieve elementen aanzienlijk verbeterd. Enerzijds wordt snel extra informatie toegevoegd waar nodig, anderzijds wordt in complexere componenten gezorgd voor een schaalbare en onderhoudbare oplossing. Dit resulteert in een betere begrijpbaarheid en voorspelbaarheid voor screenreadergebruikers.
 
-\paragraph{Oplossing 3: Gebruik van \texttt{aria-expanded} en \texttt{aria-controls}}
+\paragraph{Probleem 3: Onvoldoende communicatie van status en relatie bij uitklapbare elementen}
 
 \paragraph{Probleemanalyse}
 
-Bij uitklapbare of toggle-menu's (zoals een hamburgermenu) is het voor screenreaders vaak onduidelijk of het menu open of gesloten is en welke elementen door de toggle worden bediend. Zonder expliciete ARIA-relaties missen gebruikers cruciale context: ze weten niet of een knop een paneel opent of het juist sluit, en welke content daarbij hoort.
+Bij uitklapbare of toggle-elementen, zoals een hamburgermenu, werd vastgesteld dat de status (open of gesloten) en de relatie met de bijhorende content niet expliciet gecommuniceerd werden naar screenreaders. 
+
+Hierdoor missen gebruikers essentiële context: het is onduidelijk of een knop een menu opent of sluit en welke inhoud door deze actie beïnvloed wordt. Dit leidt tot verwarring en een minder voorspelbare navigatie-ervaring.
 
 \paragraph{Oplossing}
 
-Het gebruik van \texttt{aria-expanded} maakt de huidige staat van een toggle expliciet ("true" of "false"), terwijl \texttt{aria-controls} verwijst naar het id van het element dat door de toggle wordt beheerd. Samen leggen deze attributen de relatie tussen controle en gecontroleerde content vast, wat zowel voor screenreaders als voor hulpmiddelen die de toegankelijkheidsboom analyseren zeer waardevol is. Belangrijke notities:
+Om dit probleem te verhelpen werd gebruikgemaakt van de ARIA-attributen \texttt{aria-expanded} en \texttt{aria-controls}. 
 
-- Zorg dat het id in \texttt{aria-controls} exact overeenkomt met het id van het gecontroleerde element.
-- Werk \texttt{aria-expanded} dynamisch bij wanneer de zichtbare staat verandert.
-- Overweeg focusbeheer binnen het geopende paneel zodat toetsenbordgebruikers niet vast komen te zitten.
+Het attribuut \texttt{aria-expanded} geeft de huidige status van het element weer (open of gesloten), terwijl \texttt{aria-controls} een expliciete relatie legt met het element dat door de toggle wordt aangestuurd. 
+
+Bij de implementatie werd rekening gehouden met volgende aandachtspunten:
+
+\begin{itemize}
+	\item Het \texttt{id} in \texttt{aria-controls} komt exact overeen met het \texttt{id} van het gecontroleerde element;
+	\item De waarde van \texttt{aria-expanded} wordt dynamisch aangepast op basis van de actuele toestand;
+	\item De structuur van het DOM blijft consistent zodat screenreaders de relatie correct kunnen interpreteren.
+\end{itemize}
 
 \begin{listing}[H]
 \begin{minted}{csharp}
@@ -217,11 +225,170 @@ Het gebruik van \texttt{aria-expanded} maakt de huidige staat van een toggle exp
 
 Door \texttt{aria-expanded} en \texttt{aria-controls} toe te voegen krijgt een screenreader-gebruiker directe feedback over de toggle-status en de relatie met de inhoud. Dit vermindert verwarring en verbetert de navigatie-ervaring, vooral bij dynamische componenten.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Verbeterde toetsenbordbediening en focus}
 
-De tweede focus ligt op de bedienbaarheid via het toetsenbord. Interactieve onderdelen worden nagelopen op focusbaarheid, volgorde en activering. Elementen die wel visueel aanwezig zijn maar geen focus ontvangen, worden aangepast zodat ze logisch kunnen worden bereikt met \texttt{Tab} en \texttt{Shift+Tab}.
+Deze verbetering richtte zich op de bedienbaarheid van de applicatie via het toetsenbord. Interactieve elementen werden geanalyseerd op focusbaarheid, volgorde en activering. Elementen die visueel aanwezig waren maar geen focus ontvingen, werden aangepast zodat ze logisch bereikbaar zijn via \texttt{Tab} en \texttt{Shift+Tab}.
 
-Bovendien wordt de zichtbaarheid van de focusstaat versterkt. Dat is belangrijk omdat gebruikers anders moeilijk kunnen inschatten welk element op dat moment actief is. Een duidelijke focusindicator verhoogt de oriëntatie en vermindert het risico op bedieningsfouten.
+Daarnaast werd de zichtbaarheid van de focusstaat verbeterd. Dit is essentieel omdat gebruikers anders moeilijk kunnen inschatten welk element op dat moment actief is. Een duidelijke focusindicator verhoogt de oriëntatie en vermindert het risico op bedieningsfouten.
+
+\paragraph{Probleem: Ontbrekende of onzichtbare focusindicatoren}
+
+\paragraph{Probleemanalyse}
+
+Tijdens de audit werd vastgesteld dat veel interactieve elementen geen duidelijke focusstate hadden. De standaardbrowser-focus (zoals een dunne outline) was op veel plaatsen niet zichtbaar genoeg tegen het achtergrondontwerp van de applicatie. Voor toetsenbordgebruikers is dit zeer problematisch: zij kunnen niet meer volgen welk element op dat moment gefocusseerd is, wat leidt tot desorïentatie en navigatiefouten.
+
+Bovendien waren bepaalde custom-componenten (zoals MudBlazor-knoppen) niet voorzien van enige focusindicator, wat ze praktisch ontoegankelijk maakte voor toetsenbordgebruikers.
+
+\paragraph{Oplossing 1: Centrale focusstijl via \texttt{:focus-visible}}
+
+De oplossing bestaat uit twee delen: ten eerste de CSS-pseudo-klasse \texttt{:focus-visible} gebruiken en toepassen op alle interactieve elementen en ten tweede een duidelijke, consistent zichtbare focusstyle definiëren die goed contrasteert tegen de applicatieachtergrond.
+
+Het \texttt{:focus-visible} pseudo-element zorgt ervoor dat de focusstyle alleen zichtbaar is wanneer het element via toetsenbord gefocusseerd wordt (niet wanneer het via muis geklikt wordt), wat de visuele netheid verbetert.
+
+\begin{listing}[H]
+\begin{minted}{css}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[mudbla zer-component],
+.mud-icon-button:focus-visible,
+.mud-button-root:focus-visible,
+.mud-menu-button:focus-visible,
+[role="link"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ff9900;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+\end{minted}
+\caption{Centrale CSS-regels voor zichtbare focusindicatoren.}
+\label{lst:focus-visible-css}
+\end{listing}
+
+De gekozen stijl bestaat uit:
+
+\begin{itemize}
+	\item Een \textbf{3px solide oranje outline} (\texttt{\#ff9900}) die goed zichtbaar is tegen lichte en donkere achtergronden;
+	\item Een \texttt{outline-offset} van 3px zodat de focuslijn niet direct tegen het element aansluit, wat extra duidelijkheid biedt;
+	\item Een \texttt{border-radius} van 6px voor een vriendelijk, consistent uiterlijk.
+\end{itemize}
+
+De selectoren dekken alle veelvoorkomende interactieve elementen af:
+\begin{itemize}
+	\item Native HTML-elementen (\texttt{a}, \texttt{button}, \texttt{input}, \texttt{select}, \texttt{textarea});
+	\item MudBlazor-componenten (\texttt{.mud-icon-button}, \texttt{.mud-button-root}, \texttt{.mud-menu-button});
+	\item Elementen met ARIA-rollen (\texttt{[role="link"]});
+	\item Alle elementen met een \texttt{tabindex} (met opzet focusseerbaar gemaakte elementen).
+\end{itemize}
+
+\paragraph{Reflectie}
+
+Door een expliciete, centraal gedefinieerde focusstyle toe te voegen krijgen toetsenbordgebruikers directe visuele feedback. De keuze voor oranje zorgt voor een duidelijke herkenning zonder de applicatie visueel te overbelasten. Deze ene CSS-regel verbetert de toetsenbordnavigatie aanzienlijk en maakt de applicatie voor alle gebruikers voorspelbaarder.
+
+\paragraph{Oplossing 2: Component-specifieke focusstijl}
+
+\paragraph{Context}
+
+Sommige UI-delen vereisen een afwijkende visuele behandeling om voldoende contrast en herkenbaarheid te garanderen. Een goed voorbeeld is de interactieve campuskaart (SchoonmeersenMap) waar SVG-anchors en kleine klikbare gebieden een strakkere, contrasterende focusindicator nodig hebben.
+
+\paragraph{Implementatie}
+
+Voor dit component werd een component-scoped CSS-regel toegevoegd die een duidelijke rode focusrand en subtiele halo gebruikt. Dit zorgt dat toetsenbordgebruikers de focus ook in complexe SVG-omgevingen duidelijk kunnen volgen.
+
+\begin{listing}[H]
+\begin{minted}{css}
+
+.map-svg a:focus-visible,
+.map-svg [role="button"]:focus-visible,
+.map-svg [tabindex]:focus-visible {
+    outline: 3px solid #d32f2f;   /* visible red border */
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(211,47,47,0.12);
+}
+
+.map-svg a:focus,
+.map-svg [role="button"]:focus,
+.map-svg [tabindex]:focus {
+    outline: 3px solid #d32f2f !important;
+    outline-offset: 3px !important;
+}
+\end{minted}
+\caption{Component-scoped focusregels voor de campuskaart (SchoonmeersenMap).}
+\label{lst:map-focus-css}
+\end{listing}
+
+\paragraph{Reflectie}
+
+Deze component-specifieke stijl is bedoeld om de leesbaarheid en bediening binnen de kaart te maximaliseren zonder het algemene applicatie-ontwerp te verstoren.
+
+\paragraph{Oplossing 3: Focusbaarheid van niet-interactieve elementen via \texttt{tabindex}}
+
+\paragraph{Probleemanalyse}
+
+Sommige interface-elementen (bijvoorbeeld kaartitems of lesblokken) zijn opgebouwd met semantische maar niet-standaard-interactieve tags zoals \texttt{div} of \texttt{h2}. Wanneer deze elementen klikbaar worden gemaakt via JavaScript of component-events, zijn ze standaard niet bereikbaar met het toetsenbord en dus ontoegankelijk voor toetsenbordgebruikers.
+
+\paragraph{Oplossing}
+
+Een veelgebruikte oplossing is het toevoegen van \texttt{tabindex="0"} om zulke elementen focusbaar te maken. Dit zorgt dat ze opgenomen worden in de tabvolgorde en dat ze visueel een focusstaat krijgen door de eerder beschreven focusregels. Belangrijke aandachtspunten:
+
+- Gebruik \texttt{tabindex="0"} (niet positieve waarden) zodat de natuurlijke tabvolgorde behouden blijft;
+- Geef duidelijke ARIA- of tekstuele labels (\texttt{aria-label} of zichtbare tekst) zodat screenreaders context krijgen;
+- Zorg dat toetsenbordactivatie werkt: behandel \texttt{Enter} en \texttt{Space} als activering (bij voorkeur via een aparte \texttt{@onkeydown}-handler of door een semantisch element zoals \texttt{button} of \texttt{a} te gebruiken);
+- Overweeg \texttt{role="button"} wanneer een element semantisch geen knop is maar wel knopgedrag heeft.
+
+Onderstaand voorbeeld illustreert de aanpak toegepast op een lesblok in het lessenrooster. Het element is focusbaar gemaakt met \texttt{tabindex="0"} en krijgt een dynamische \texttt{aria-label} zodat screenreaders relevante context voorlezen.
+
+\begin{listing}[H]
+\begin{minted}{csharp}
+//voor
+<div aria-label="@($"les: {Course.Name}, Begint om {Course.Start:HH.mm}.")" 
+     class="class-schedule-block"
+     @onclick="() => OnCourseSelected.InvokeAsync(Course!.Id)"
+     @onkeydown="@(e => { if (e.Key == "Enter" || e.Key == " ") OnCourseSelected.InvokeAsync(Course!.Id); })">
+    @if (Course is not null)
+    {
+        <TimeBlock StartTime="@Course.Start" EndTime="@Course.End"/>
+        <div class="class-schedule-info">
+            <h2 class="course-name">@Course.Name</h2>
+            ...
+        </div>
+    }
+</div>
+
+//Na
+<div tabindex="0" aria-label="@($"les: {Course.Name}, Begint om {Course.Start:HH.mm}.")" 
+     class="class-schedule-block"
+     @onclick="() => OnCourseSelected.InvokeAsync(Course!.Id)"
+     @onkeydown="@(e => { if (e.Key == "Enter" || e.Key == " ") OnCourseSelected.InvokeAsync(Course!.Id); })">
+    @if (Course is not null)
+    {
+        <TimeBlock StartTime="@Course.Start" EndTime="@Course.End"/>
+        <div class="class-schedule-info">
+            <h2 class="course-name">@Course.Name</h2>
+            ...
+        </div>
+    }
+</div>
+\end{minted}
+\caption{Gebruik van \texttt{tabindex="0"} en keyboard-activatie op een lesblok.}
+\label{lst:tabindex-course}
+\end{listing}
+
+\paragraph{Reflectie}
+
+Het gebruik van \texttt{tabindex} maakt dynamische of niet-semantische elementen direct toegankelijk voor toetsenbordgebruikers. Waar mogelijk verdient het de voorkeur om semantische interactieve elementen (\texttt{button}, \texttt;a\texttt{}) te gebruiken; \texttt{tabindex} is echter een pragmatische en veilige oplossing wanneer herstructurering niet haalbaar is. Zorg altijd voor bijbehorende keyboard-handlers en ARIA-annotaties om volledige toegankelijkheid te garanderen.
+
+\paragraph{Integrale toepassing van focusverbeteringen}
+
+De beschreven oplossingen werden niet beperkt tot individuele componenten, maar systematisch toegepast over de volledige applicatie. Door het combineren van een centrale focusstijl met component-specifieke uitbreidingen en het verbeteren van focusbaarheid via \texttt{tabindex}, werd een consistente en voorspelbare toetsenbordnavigatie gerealiseerd.
+
+Deze geïntegreerde aanpak zorgt ervoor dat gebruikers zich vlot door de interface kunnen bewegen, ongeacht het type component of complexiteit van de interactie. Hierdoor wordt de toegankelijkheid niet enkel lokaal verbeterd, maar structureel verankerd binnen de applicatie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Contrast en visuele leesbaarheid}
 
