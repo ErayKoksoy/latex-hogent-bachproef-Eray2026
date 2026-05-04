@@ -7,7 +7,10 @@ In dit hoofdstuk worden de oorspronkelijke experimenten herhaald onder zo vergel
 \label{subsec:hertesting-lighthouse}
 
 \subsubsection{Performantie}
-De gemeten waarden per pagina zijn:
+
+De performantie van de applicatie werd geëvalueerd aan de hand van een Lighthouse-audit. Hierbij worden verschillende kernmetrics gebruikt die samen een beeld geven van de laadsnelheid, responsiviteit en visuele stabiliteit van de applicatie. De belangrijkste metrics zijn First Contentful Paint (FCP), Largest Contentful Paint (LCP), Total Blocking Time (TBT), Speed Index en Cumulative Layout Shift (CLS).
+
+De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 
 \begin{table}[h]
 \centering
@@ -26,6 +29,52 @@ Notificatiepagina & 7.0 & 7.7 & 8640 & 7.1 & 0.079 \\
 \hline
 \end{tabular}
 \end{table}
+
+Uit de resultaten blijkt dat de verschillende pagina’s een gelijkaardig patroon vertonen binnen de gemeten metrics. De waarden voor FCP en LCP blijven relatief consistent over de pagina’s heen, met uitzondering van enkele uitschieters.
+
+De verdere interpretatie van deze resultaten en de vergelijking met de hertest worden behandeld in de volgende sectie.
+
+\subsubsection{toegankelijkheid}
+
+De toegankelijkheid van de applicatie werd geëvalueerd via een Lighthouse-audit. Deze metric geeft een indicatie van hoe goed de applicatie bruikbaar is voor gebruikers met verschillende beperkingen, zoals visuele of motorische beperkingen. De score wordt uitgedrukt op een schaal van 100, waarbij een hogere score duidt op betere toegankelijkheid.
+
+De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
+
+\begin{table}[h]
+\centering
+\caption[Toegankelijkheidsscore per pagina]{Overzicht van de Lighthouse-toegankelijkheidsscore per pagina.}
+\label{tab:toegankelijkheid-score-per-pagina}
+\begin{tabular}{lcc}
+\hline
+\textbf{Pagina} & \textbf{Totale score (/100)} & \textbf{Zone} \\
+\hline
+Homepagina & 96 & Goed \\
+Nieuwspagina & 100 & Goed \\
+Campuspagina & 100 & Goed \\
+Lessenroosterpagina & 100 & Goed \\
+Deadlinepagina & 100 & Goed \\
+Notificatiepagina & 100 & Goed \\
+\hline
+\end{tabular}
+\end{table}
+
+Uit de resultaten blijkt dat de applicatie in het algemeen zeer goed scoort op toegankelijkheid. Vijf van de zes pagina's behalen een perfecte score van 100/100, wat wijst op een correcte implementatie van semantische HTML, voldoende structuur en een goede ondersteuning voor assistieve technologieën.
+
+Enkel op de homepagina werd een lichte afwijking vastgesteld met een score van 96/100. Lighthouse detecteerde hier een klein probleem met onvoldoende contrast tussen bepaalde tekst- en achtergrondkleuren. Dit kan de leesbaarheid voor gebruikers met visuele beperkingen licht beïnvloeden, maar heeft geen kritieke impact op de algemene bruikbaarheid van de applicatie.
+
+Hoewel de impact beperkt is, wordt dit beschouwd als een verbeterpunt binnen de verdere optimalisatie van de gebruikersinterface.
+
+\subsection{Manuele test: nulmeting vs hertesting (toegankelijkheid)}
+In aanvulling op de geautomatiseerde Lighthouse-audit werd de toegankelijkheid ook manueel geëvalueerd, met specifieke aandacht voor toetsenbordnavigatie en ondersteuning door schermlezers. Deze sectie bespreekt de verschillen tussen de eerder uitgevoerde nulmeting en de hertesting.
+
+Tijdens de nulmeting werd vastgesteld dat de applicatie aanzienlijke tekortkomingen vertoonde op het vlak van toetsenbordtoegankelijkheid. De navigatie via de tabtoets was beperkt en inconsistent, waardoor gebruikers niet op een logische manier doorheen de interface konden navigeren. Daarnaast werden verschillende interactieve elementen niet correct geïnterpreteerd door de schermlezer NVDA of ontbraken duidelijke aankondigingen volledig. Dit bemoeilijkte zowel de toegang tot als het begrip van de inhoud.
+
+De resultaten van de hertesting tonen aan dat deze problemen in belangrijke mate zijn verholpen. De focusvolgorde werd herwerkt zodat deze overeenkomt met de semantische en visuele structuur van de applicatie. Hierdoor is een consistente en voorspelbare navigatie via de tabtoets mogelijk geworden.
+
+Verder worden interface-elementen nu correct herkend en aangekondigd door NVDA. Dit omvat onder andere het voorlezen van labels, rollen en statussen van interactieve componenten, waardoor gebruikers een beter inzicht krijgen in de functionaliteit en structuur van de applicatie.
+
+De vergelijking tussen beide meetmomenten wijst op een duidelijke verbetering in de praktische toegankelijkheid van de applicatie. Waar de nulmeting wees op structurele problemen in navigatie en interpretatie, bevestigt de hertesting dat de doorgevoerde aanpassingen hebben geleid tot een aanzienlijk betere ondersteuning van assistieve technologieën en toetsenbordgebruik.
+
 
 \subsection{Visualisatie: nulmeting vs hertesting (performantie)}
 
@@ -59,6 +108,7 @@ Om de vergelijking tussen nulmeting en hertesting visueel te ondersteunen, worde
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
 
 \subsubsection{LCP vergelijking (nulmeting vs hertesting)}
 \begin{center}
@@ -117,3 +167,31 @@ Om de vergelijking tussen nulmeting en hertesting visueel te ondersteunen, worde
 \end{axis}
 \end{tikzpicture}
 \end{center}
+
+\subsubsection{Percentuele verandering tussen nulmeting en hertesting}
+
+Onderstaande tabel toont de relatieve verandering (\(\Delta\%\)) per metric en per pagina. Een waarde rond 0\% wijst op geen meetbare impact, terwijl grote schommelingen eerder wijzen op meetvariatie dan op structurele verbetering.
+
+\begin{table}[h]
+\centering
+\caption{Percentuele verandering per metric tussen nulmeting en hertesting}
+\label{tab:delta-percentueel}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Pagina} & \textbf{FCP} & \textbf{LCP} & \textbf{TBT} & \textbf{Speed Index} & \textbf{CLS} \\
+\hline
+Home & -20.0\% & +1110\% & +4.3\% & +2.9\% & 0\% \\
+Nieuwspagina & +5.9\% & +0.3\% & +21.6\% & +10.8\% & 0\% \\
+Campuspagina & +3.5\% & -1.6\% & +4.1\% & +0.7\% & 0\% \\
+Lessenrooster & -21.1\% & -22.1\% & -50.1\% & 0\% & n.v.t. \\
+Deadlinepagina & +7.4\% & +1.7\% & -50.1\% & +27.8\% & 0\% \\
+Notificaties & +27.3\% & +28.3\% & -17.9\% & -9.0\% & 0\% \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Korte impactsamenvatting}
+
+Op basis van de tabel hierboven kan geconcludeerd worden dat de impact van de aangebrachte wijzigingen vooral zichtbaar is in de verwerkingsbelasting van de applicatie, terwijl de overige metrics minder uitgesproken veranderen. De volledige eindconclusie en duiding van de betekenis voor toegankelijkheid worden in het volgende hoofdstuk besproken.
+
+
