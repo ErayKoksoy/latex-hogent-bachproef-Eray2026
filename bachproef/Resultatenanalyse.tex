@@ -1,0 +1,29 @@
+\chapter{Hertesting en vergelijking van applicatieresultaten}
+\label{ch:resultatenanalyse}
+
+In dit hoofdstuk worden de oorspronkelijke experimenten herhaald onder zo vergelijkbaar mogelijke omstandigheden, om de impact van de aangebrachte wijzigingen te evalueren. Het hoofdstuk is zodanig gestructureerd dat de tests reproduceerbaar zijn en de vergelijking op een statistisch onderbouwde manier kan worden uitgevoerd.
+
+\subsection{Hertesting via Lighthouse-audit}
+\label{subsec:hertesting-lighthouse}
+
+\subsubsection{Performantie}
+De gemeten waarden per pagina zijn:
+
+\begin{table}[h]
+\centering
+\caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
+\label{tab:lighthouse-per-pagina}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Pagina} & \textbf{FCP (s)} & \textbf{LCP (s)} & \textbf{TBT (ms)} & \textbf{Speed Index (s)} & \textbf{CLS} \\
+\hline
+Homepagina & 5.6 & 90.8 & 10210 & 10.7 & 0.079 \\
+Nieuwspagina & 5.4 & 92.4 & 11330 & 12.3 & 0.078 \\
+Campuspagina & 5.9 & 6.2 & 9830 & 13.5 & 0.08 \\
+Lessenroosterpagina & 5.6 & 6.0 & 9320 & 8.0 & 0.079 \\
+Deadlinepagina & 5.8 & 6.0 & 9580 & 6.9 & 0.08 \\
+Notificatiepagina & 7.0 & 7.7 & 8640 & 7.1 & 0.079 \\
+\hline
+\end{tabular}
+\end{table}
+
