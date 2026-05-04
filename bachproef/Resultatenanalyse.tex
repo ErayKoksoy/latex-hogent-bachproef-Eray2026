@@ -27,3 +27,93 @@ Notificatiepagina & 7.0 & 7.7 & 8640 & 7.1 & 0.079 \\
 \end{tabular}
 \end{table}
 
+\subsection{Visualisatie: nulmeting vs hertesting (performantie)}
+
+Om de vergelijking tussen nulmeting en hertesting visueel te ondersteunen, worden hieronder overlay-grafieken weergegeven. Hierbij worden beide meetmomenten per metric in één figuur geplaatst, zodat verschillen en stabiliteit direct zichtbaar worden.
+
+\subsubsection{FCP vergelijking (nulmeting vs hertesting)}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    ybar,
+    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
+    xtick=data,
+    ylabel={FCP (s)},
+    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
+    ymin=0,
+    bar width=6pt
+]
+
+\addplot coordinates {
+    (Home,7.0) (Nieuws,5.1) (Campus,5.7)
+    (Roster,7.1) (Deadline,5.4) (Notificaties,5.5)
+};
+
+\addplot coordinates {
+    (Home,5.6) (Nieuws,5.4) (Campus,5.9)
+    (Roster,5.6) (Deadline,5.8) (Notificaties,7.0)
+};
+
+\legend{Nulmeting,Hertesting}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{LCP vergelijking (nulmeting vs hertesting)}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    ybar,
+    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
+    xtick=data,
+    ylabel={LCP (s)},
+    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
+    ymin=0,
+    bar width=6pt
+]
+
+\addplot coordinates {
+    (Home,7.5) (Nieuws,92.1) (Campus,6.3)
+    (Roster,7.7) (Deadline,5.9) (Notificaties,6.0)
+};
+
+\addplot coordinates {
+    (Home,90.8) (Nieuws,92.4) (Campus,6.2)
+    (Roster,6.0) (Deadline,6.0) (Notificaties,7.7)
+};
+
+\legend{Nulmeting,Hertesting}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{TBT vergelijking (nulmeting vs hertesting)}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    ybar,
+    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
+    xtick=data,
+    ylabel={TBT (ms)},
+    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
+    ymin=0,
+    bar width=6pt
+]
+
+\addplot coordinates {
+    (Home,9790) (Nieuws,9320) (Campus,9440)
+    (Roster,18680) (Deadline,19200) (Notificaties,10530)
+};
+
+\addplot coordinates {
+    (Home,10210) (Nieuws,11330) (Campus,9830)
+    (Roster,9320) (Deadline,9580) (Notificaties,8640)
+};
+
+\legend{Nulmeting,Hertesting}
+\end{axis}
+\end{tikzpicture}
+\end{center}
