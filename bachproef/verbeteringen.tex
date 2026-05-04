@@ -285,6 +285,20 @@ De selectoren dekken alle veelvoorkomende interactieve elementen af:
 	\item Alle elementen met een \texttt{tabindex} (met opzet focusseerbaar gemaakte elementen).
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-1-before.PNG}
+\caption{Voor de aanpassing: een interactieve element zonder zichtbare focusindicator.}
+\label{fig:focus-1-before}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-1-after.PNG}
+\caption{Na de aanpassing: dezelfde interactieve element met een duidelijke oranje focusindicator.}
+\label{fig:focus-1-after}
+\end{figure}
+
 \paragraph{Reflectie}
 
 Door een expliciete, centraal gedefinieerde focusstyle toe te voegen krijgen toetsenbordgebruikers directe visuele feedback. De keuze voor oranje zorgt voor een duidelijke herkenning zonder de applicatie visueel te overbelasten. Deze ene CSS-regel verbetert de toetsenbordnavigatie aanzienlijk en maakt de applicatie voor alle gebruikers voorspelbaarder.
@@ -320,6 +334,20 @@ Voor dit component werd een component-scoped CSS-regel toegevoegd die een duidel
 \caption{Component-scoped focusregels voor de campuskaart (SchoonmeersenMap).}
 \label{lst:map-focus-css}
 \end{listing}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-2-before.PNG}
+\caption{Voor de aanpassing: interactieve elementen op de campuskaart zonder zichtbare focusindicator.}
+\label{fig:focus-2-before}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-2-after.PNG}
+\caption{Na de aanpassing: interactieve elementen op de campuskaart met een duidelijke rode focusindicator.}
+\label{fig:focus-2-after}
+\end{figure}
 
 \paragraph{Reflectie}
 
@@ -377,6 +405,20 @@ Onderstaand voorbeeld illustreert de aanpak toegepast op een lesblok in het less
 \caption{Gebruik van \texttt{tabindex="0"} en keyboard-activatie op een lesblok.}
 \label{lst:tabindex-course}
 \end{listing}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-3-before.PNG}
+\caption{Voor de aanpassing: niet-interactieve elementen zonder zichtbare focusindicator.}
+\label{fig:focus-3-before}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.38\textwidth]{focus-3-after.PNG}
+\caption{Na de aanpassing: niet-interactieve elementen en zichtbare focusindicator.}
+\label{fig:focus-3-after}
+\end{figure}
 
 \paragraph{Reflectie}
 
@@ -460,14 +502,14 @@ Deze wijzigingen werden doorgevoerd in de component-scoped CSS-bestanden:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{homepage-contrast-before.png}
+\includegraphics[width=0.75\textwidth]{homepage-contrast-before.png}
 \caption{Voor de aanpassing: volgende les component met lage contrastwaarde.}
 \label{fig:next-lesson-contrast-before}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{homepage-contrast-after.png}
+\includegraphics[width=0.75\textwidth]{homepage-contrast-after.png}
 \caption{Na de aanpassing: volgende les component met verbeterde contrastwaarde.}
 \label{fig:next-lesson-contrast-after}
 \end{figure}
@@ -493,14 +535,14 @@ Door deze overschrijvingen wordt de standaard styling van MudBlazor aangepast na
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{homepage-alert-before.png}
+\includegraphics[width=0.75\textwidth]{homepage-alert-before.png}
 \caption{Voor de aanpassing: alertweergave met lage contrastwaarde.}
 \label{fig:alert-contrast-before}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{homepage-alert-after.png}
+\includegraphics[width=0.75\textwidth]{homepage-alert-after.png}
 \caption{Na de aanpassing: alertweergave met verbeterde contrastwaarde.}
 \label{fig:alert-contrast-after}
 \end{figure}
