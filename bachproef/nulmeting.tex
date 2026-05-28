@@ -30,6 +30,71 @@ Voor de nulmeting werd een Lighthouse-audit uitgevoerd op de webapplicatie. Omda
 \subsubsection{Performantie}
 De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gemeten waarden per pagina zijn:
 
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={First Contentful Paint (s)},
+	ytick={1,2},
+    yticklabels={Home, Nieuws},
+	ymajorgrids,
+    title={FCP Measurements}
+  ]
+    \addplot[
+      boxplot,
+	  fill=blue!20
+    ] table[y index=0] {
+      data
+      7.2 
+		5.6 
+		5.6 
+		7.1 
+		7.1 
+		7.0 
+		7.0 
+		5.4 
+		5.6 
+		7.0 
+		5.6 
+		7.2 
+		5.7 
+		7.0 
+		5.5 
+		5.6 
+		5.3 
+		7.2 
+		7.0 
+		6.9 
+    };
+	\addplot[
+      boxplot,
+	  fill=blue!20
+    ] table[y index=0] {
+      data
+      7.2
+	  7.0
+	  7.2
+	  7.1
+	  5.4
+	  7.2
+	  7.2
+	  7.2
+	  5.4
+	  7.0 
+	  7.2
+	  5.4
+	  7.0
+	  7.2
+	  5.7
+	  5.8
+	  7.3
+	  6.9
+	  7.0
+	  7.2 
+    };
+  \end{axis}
+\end{tikzpicture}
+
+
 \begin{table}[h]
 \centering
 \caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
