@@ -31,7 +31,8 @@ Voor de nulmeting werd een Lighthouse-audit uitgevoerd op de webapplicatie. Omda
 Om de performantie van de applicatie objectief te evalueren, werd een nulmeting uitgevoerd op zes verschillende pagina’s: Home, Nieuws, Campus, Lessenrooster, Deadline en Notificatie. Voor elke pagina werden vijftien metingen uitgevoerd met Lighthouse, zodat niet enkel gemiddelde waarden maar ook de spreiding en consistentie van de resultaten konden worden geanalyseerd. De resultaten worden weergegeven aan de hand van boxplots, waardoor verschillen tussen pagina’s en variaties tussen metingen duidelijk zichtbaar worden.
 
 De nulmeting dient als baseline voor de verdere optimalisaties in dit onderzoek. Het doel van deze metingen is het creëren van een referentiepunt waarmee de impact van toekomstige verbeteringen objectief kan worden vergeleken.
-
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}
   \begin{axis}[
     boxplot/draw direction=x,
@@ -180,9 +181,14 @@ De nulmeting dient als baseline voor de verdere optimalisaties in dit onderzoek.
     };
   \end{axis}
 \end{tikzpicture}
+\caption[FCP-metingen per pagina]{Boxplot van de First Contentful Paint-metingen per pagina tijdens de nulmeting.}
+\label{fig:fcp-nulmeting}
+\end{figure}
 
-De \textit{First Contentful Paint} (FCP)-metingen tonen aan hoe snel de eerste zichtbare inhoud op het scherm verschijnt. De resultaten liggen voor de verschillende pagina’s relatief dicht bij elkaar, wat wijst op consistente laadtijden binnen de applicatie. Ook de beperkte spreiding in de boxplots bevestigt dat de resultaten stabiel blijven over meerdere metingen.
+De \textit{First Contentful Paint} (FCP)-metingen tonen aan hoe snel de eerste zichtbare inhoud op het scherm verschijnt. Zoals zichtbaar in Figuur~\ref{fig:fcp-nulmeting} de resultaten liggen voor de verschillende pagina’s relatief dicht bij elkaar, wat wijst op consistente laadtijden binnen de applicatie. Ook de beperkte spreiding in de boxplots bevestigt dat de resultaten stabiel blijven over meerdere metingen.
 
+\begin{figure}[H] 
+\centering
 \begin{tikzpicture}
 	\begin{axis}[
 		boxplot/draw direction=x,
@@ -236,7 +242,12 @@ De \textit{First Contentful Paint} (FCP)-metingen tonen aan hoe snel de eerste z
 		};
 	\end{axis}
 \end{tikzpicture}
+\caption[LCP-metingen voor Home en Nieuws]{Boxplot van de Largest Contentful Paint-metingen voor de Home- en Nieuwspagina tijdens de nulmeting.} 
+\label{fig:lcp-home-nieuws} 
+\end{figure}
 
+\begin{figure}[H] 
+\centering
 \begin{tikzpicture}
 	\begin{axis}[
 		boxplot/draw direction=x,
@@ -333,9 +344,14 @@ De \textit{First Contentful Paint} (FCP)-metingen tonen aan hoe snel de eerste z
 		};
 	\end{axis}
 \end{tikzpicture}
+\caption[LCP-metingen overige pagina’s]{Boxplot van de Largest Contentful Paint-metingen voor Campus, Lessenrooster, Deadline en Notificatie tijdens de nulmeting.} 
+\label{fig:lcp-overige} 
+\end{figure}
 
 Bij de \textit{Largest Contentful Paint} (LCP)-metingen is zichtbaar wanneer het grootste inhoudselement volledig gerenderd wordt. De Home- en Nieuwspagina vertonen duidelijk hogere LCP-waarden dan de overige pagina’s, wat verklaarbaar is door de grotere hoeveelheid visuele en dynamische inhoud die bij het laden verwerkt moet worden. De andere pagina’s liggen qua resultaten dicht bij elkaar, wat wijst op een consistente renderingperformantie binnen de rest van de applicatie.
 
+\begin{figure}[H] 
+\centering
 \begin{tikzpicture}
 	\begin{axis}[
 		boxplot/draw direction=x,
@@ -474,9 +490,14 @@ Bij de \textit{Largest Contentful Paint} (LCP)-metingen is zichtbaar wanneer het
 		};
 	\end{axis}
 \end{tikzpicture}
+\caption[Speed Index-metingen per pagina]{Boxplot van de Speed Index-metingen per pagina tijdens de nulmeting.} 
+\label{fig:speed-index} 
+\end{figure}
 
 De \textit{Speed Index} geeft weer hoe snel de zichtbare inhoud geleidelijk opgebouwd wordt tijdens het laden van de pagina. De metingen tonen een gelijkaardig patroon over de verschillende pagina’s, waardoor deze metriek later gebruikt kan worden om de invloed van optimalisaties op de gebruikerservaring te evalueren.
 
+\begin{figure}[H] 
+\centering
 \begin{tikzpicture}
 	\begin{axis}[
 		boxplot/draw direction=x,
@@ -615,6 +636,9 @@ De \textit{Speed Index} geeft weer hoe snel de zichtbare inhoud geleidelijk opge
 		};
 	\end{axis}
 \end{tikzpicture}
+\caption[TBT-metingen per pagina]{Boxplot van de Total Blocking Time-metingen per pagina tijdens de nulmeting.} 
+\label{fig:tbt} 
+\end{figure}
 
 Daarnaast werd ook de \textit{Total Blocking Time} (TBT) gemeten. Deze metriek geeft inzicht in de tijd waarin de browser bezig is met het verwerken van taken op de main thread. De resultaten vormen een nuttige basis om later de impact van optimalisaties in JavaScript-verwerking en rendering te analyseren.
 
