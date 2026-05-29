@@ -306,6 +306,860 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \label{fig:fcp-comparison}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\textbf{(a) Nulmeting}\\[1ex]
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Largest Contentful Paint (s)},
+	    ytick={1,2},
+		yticklabels={Home, Nieuws},
+	    ymajorgrids,
+		title={LCP Measurements}
+	]
+		\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			90.9
+			90.8
+			91.0
+			90.9
+			90.9
+			91.1
+			90.8
+			91.2
+			90.9
+			90.8
+			90.9
+			90.9
+			91.0
+			90.8
+			90.9
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			92.1
+			92.3
+			92.3
+			92.1
+			92.3
+			92.3
+			92.4
+			92.0
+			92.3
+			92.3
+			92.3
+			92.3
+			92.2
+			92.3
+			92.6
+		};
+	\end{axis}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\textbf{(b) Hertesting}\\[1ex]
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={Largest Contentful Paint (s)},
+    ytick={1,2},
+    yticklabels={Home, Nieuws},
+    ymajorgrids,
+  ]
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      91.2
+      91.1
+      90.9
+      90.9
+      91.2
+      7.5
+      7.5
+      6.0
+      91.0
+      7.7
+      6.3
+      90.8
+      90.8
+      7.7
+      90.9
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      92.3
+      90.0
+      92.0
+      92.8
+      92.5
+      92.6
+      90.9
+      91.7
+      91.7
+      92.1
+      92.4
+      92.3
+      92.3
+      92.1
+      92.5
+    };
+  \end{axis}
+\end{tikzpicture}
+\caption{Vergelijking van Largest Contentful Paint (LCP) voor de Home- en Nieuwspagina: links de nulmeting, rechts de hertesting.}
+\label{fig:lcp-comparison-home-nieuws}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\textbf{(a) Nulmeting}\\[1ex]
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Largest Contentful Paint (s)},
+	ytick={1,2,3,4},
+		yticklabels={ Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+		title={LCP Measurements (continued) }
+	]
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			5.9
+			6.0
+			7.5
+			6.0
+			6.0
+			5.9
+			5.9
+			7.5
+			5.9
+			7.5
+			7.7
+			7.5
+			7.5
+			7.6
+			7.5
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			6.0
+			5.9
+			7.5
+			7.7
+			7.7
+			7.5
+			6.0
+			7.5
+			7.7
+			6.0
+			6.0
+			7.5
+			7.5
+			6.0
+			6.0
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			7.6
+			7.7
+			7.7
+			7.7
+			5.9
+			7.7
+			7.7
+			5.9
+			5.9
+			7.5
+			7.5
+			7.5
+			7.5
+			7.5
+			7.8
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			5.9
+			5.9
+			5.9
+			6.0
+			7.5
+			7.5
+			5.9
+			6.0
+			7.5
+			7.5
+			5.9
+			7.5
+			7.0
+			5.9
+			6.0
+			7.5
+		};
+	\end{axis}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\textbf{(b) Hertesting}\\[1ex]
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={Largest Contentful Paint (s)},
+    ytick={1,2,3,4},
+    yticklabels={Campus, Lessenrooster, Deadline, Notificatie},
+    ymajorgrids,
+  ]
+
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      6.0
+      6.3
+      7.6
+      7.8
+      7.7
+      6.3
+      7.5
+      7.5
+      7.0
+      7.5
+      7.5
+      7.5
+      6.1
+      7.7
+      6.3
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      5.9
+      7.5
+      5.9
+      5.9
+      7.5
+      7.5
+      7.5
+      5.9
+      5.9
+      7.5
+      7.5
+      7.5
+      82.8
+      7.5
+      7.0
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      5.9
+      5.9
+      7.5
+      5.9
+      5.9
+      5.9
+      7.5
+      7.5
+      7.5
+      7.5
+      7.7
+      5.9
+      7.5
+      7.5
+      7.5
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      6.0
+      7.8
+      5.9
+      6.0
+      7.5
+      7.7
+      7.5
+      7.7
+      6.0
+      7.7
+      5.9
+      5.9
+      7.7
+      6.0
+      7.7
+    };
+  \end{axis}
+\end{tikzpicture}
+\caption{Vergelijking van Largest Contentful Paint (LCP) voor de overige pagina’s: links de nulmeting, rechts de hertesting.}
+\label{fig:lcp-hertesting}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+\textbf{(a) Nulmeting}\\[1ex]
+
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Speed Index (s)},
+	ytick={1,2,3,4,5,6},
+		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+		title={Speed Index Measurements}
+	]
+		\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			12.5
+			9.0
+			9.2
+			9.2
+			9.5
+			12.1
+			10.2
+			9.9
+			10.3
+			10.2
+			10.1
+			9.5
+			10.4
+			10.1
+			10.0
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			12.3
+			10.5
+			10.8
+			11.0
+			10.5
+			10.6
+			10.6
+			10.5
+			10.7
+			10.3
+			10.7
+			11.1
+			10.7
+			11.0
+			11.6
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			13.7
+			10.6
+			10.5
+			10.5
+			10.4
+			11.1
+			10.8
+			10.9
+			10.4
+			10.1
+			11.3
+			11.1
+			11.3
+			10.8
+			11.3
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11.1
+			10.1
+			10.2
+			9.6
+			10.4
+			10.4
+			9.9
+			9.9
+			10.5
+			9.6
+			10.1
+			10.1
+			9.6
+			8.9
+			10.4
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			9.1
+			8.1
+			8.1
+			8.2
+			7.5
+			8.3
+			8.6
+			8.3
+			8.0
+			9.0
+			9.0
+			8.4
+			8.9
+			9.0
+			8.7
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			8.8
+			7.8
+			8.0
+			8.4
+			8.8
+			8.1
+			7.9
+			8.0
+			7.9
+			8.4
+			7.5
+			7.9
+			7.9
+			7.6
+			8.5
+			8.8
+		};
+	\end{axis}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\textbf{(b) Hertesting}\\[1ex]
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={Speed Index (s)},
+    ytick={1,2,3,4,5,6},
+    yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+    ymajorgrids,
+  ]
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      12.3
+      9.0
+      9.3
+      9.4
+      8.6
+      9.0
+      9.7
+      8.5
+      8.7
+      9.0
+      9.4
+      9.2
+      8.7
+      9.0
+      9.0
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      14.7
+      7.9
+      7.4
+      8.5
+      8.2
+      7.7
+      8.0
+      8.8
+      8.8
+      7.9
+      7.8
+      8.3
+      7.7
+      8.0
+      7.6
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      11.7
+      12.6
+      11.7
+      11.9
+      11.7
+      11.9
+      11.8
+      11.8
+      11.4
+      11.6
+      11.0
+      11.1
+      11.3
+      11.8
+      11.9
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      10.4
+      10.0
+      9.9
+      9.6
+      9.5
+      9.8
+      9.4
+      10.4
+      9.5
+      9.7
+      10.2
+      11.0
+      17.8
+      10.8
+      9.6
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      8.3
+      8.2
+      8.2
+      8.1
+      8.4
+      8.0
+      8.3
+      8.3
+      8.8
+      8.7
+      10.4
+      8.1
+      8.0
+      8.6
+      8.1
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      7.9
+      8.3
+      8.0
+      8.0
+      7.8
+      8.7
+      8.9
+      8.4
+      9.1
+      8.2
+      7.5
+      8.7
+      8.2
+      9.1
+      8.2
+    };
+  \end{axis}
+\end{tikzpicture}
+\caption{Vergelijking van Speed Index: links de nulmeting, rechts de hertesting.}
+\label{fig:speed-index-comparison}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\textbf{(a) Nulmeting}\\[1ex]
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Total Blocking Time (ms)},
+	ytick={1,2,3,4,5,6},
+		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+		title={TBT Measurements}
+	]
+		\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11740
+			11980
+			11170
+			11300
+			11150
+			11720
+			11420
+			11400
+			11670
+			11310
+			11650
+			9240
+			11410
+			11240
+			11320
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			9730
+			11030
+			11820
+			10920
+			11100
+			10770
+			10750
+			11340
+			11710
+			10630
+			10400
+			10930
+			11110
+			11620
+			15560
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			10150
+			10590
+			11030
+			11350
+			10730
+			10620
+			10650
+			10810
+			11410
+			10150
+			10420
+			10820
+			10540
+			11490
+			9980
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			10000
+			9760
+			9560
+			9710
+			9680
+			9660
+			10380
+			10800
+			10200
+			10320
+			9930
+			9230
+			10100
+			9510
+			9930
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11740
+			9730
+			10030
+			10180
+			9040
+			9080
+			9750
+			9520
+			10240
+			9920
+			10010
+			9440
+			10040
+			10000
+			11000
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11420
+			9510
+			9040
+			9850
+			10640
+			9580
+			10680
+			10040
+			10540
+			10210
+			9770
+			10050
+			10850
+			11000
+			10450
+			9660
+		};
+	\end{axis}
+\end{tikzpicture}
+
+\vspace{1cm}
+
+\textbf{(b) Hertesting}\\[1ex]
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={Total Blocking Time (ms)},
+    ytick={1,2,3,4,5,6},
+    yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+    ymajorgrids,
+  ]
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      12040
+      11010
+      11660
+      12990
+      10740
+      10910
+      10470
+      9830
+      10790
+      11640
+      10800
+      11670
+      10860
+      10690
+      10740
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      11500
+      11420
+      10520
+      10900
+      11340
+      10710
+      10470
+      10780
+      11110
+      10620
+      10730
+      11170
+      10290
+      11420
+      11240
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      9650
+      12290
+      11010
+      10770
+      10360
+      10250
+      12020
+      11240
+      11270
+      11890
+      11120
+      11260
+      10460
+      11240
+      10250
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      10810
+      10650
+      10120
+      9400
+      8860
+      10010
+      9290
+      9670
+      9980
+      9600
+      8940
+      10770
+      15640
+      10400
+      10710
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      12010
+      11720
+      10560
+      11390
+      12460
+      8940
+      10550
+      9980
+      9910
+      10660
+      17280
+      9610
+      10010
+      11470
+      10660
+    };
+    \addplot[boxplot, fill=red!20] table[y index=0] {
+      data
+      9150
+      10330
+      9410
+      11090
+      10390
+      10400
+      10630
+      11080
+      12520
+      10450
+      10180
+      11060
+      9300
+      12520
+      10450
+    };
+  \end{axis}
+\end{tikzpicture}
+\caption{Vergelijking van Total Blocking Time (TBT): links de nulmeting, rechts de hertesting.}
+\label{fig:tbt-comparison}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption[CLS-waarden per pagina tijdens de hertesting]{Overzicht van de Cumulative Layout Shift-waarden per pagina tijdens de hertesting.}
+\label{tab:cls-hertesting-per-pagina}
+\begin{tabular}{lc}
+\hline
+\textbf{Pagina} & \textbf{CLS} \\
+\hline
+Homepagina & 0.079 \\
+Nieuwspagina & 0.078 \\
+Campuspagina & 0.080 \\
+Lessenroosterpagina & 0.079 \\
+Deadlinepagina & 0.080 \\
+Notificatiepagina & 0.079 \\
+\hline
+\end{tabular}
+\end{table}
+
 Uit de resultaten blijkt dat de verschillende pagina’s een gelijkaardig patroon vertonen binnen de gemeten metrics. De waarden voor FCP en LCP blijven relatief consistent over de pagina’s heen, met uitzondering van enkele uitschieters.
 
 De verdere interpretatie van deze resultaten en de vergelijking met de hertest worden behandeld in de volgende sectie.
