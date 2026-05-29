@@ -183,8 +183,8 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 	\begin{axis}[
 		boxplot/draw direction=x,
 		xlabel={Largest Contentful Paint (s)},
-	ytick={1,2,3,4,5,6},
-		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+	ytick={1,2},
+		yticklabels={Home, Nieuws},
 	ymajorgrids,
 		title={LCP Measurements}
 	]
@@ -230,6 +230,18 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 			92.3
 			92.6
 		};
+	\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Largest Contentful Paint (s)},
+	ytick={1,2,3,4},
+		yticklabels={ Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+		title={LCP Measurements (continued) }
+	]
 	\addplot[
 			boxplot,
 	  fill=blue!20
