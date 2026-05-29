@@ -12,23 +12,154 @@ De performantie van de applicatie werd geëvalueerd aan de hand van een Lighthou
 
 De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 
-\begin{table}[h]
+\begin{figure}[H]
 \centering
-\caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
-\label{tab:lighthouse-per-pagina}
-\begin{tabular}{lccccc}
-\hline
-\textbf{Pagina} & \textbf{FCP (s)} & \textbf{LCP (s)} & \textbf{TBT (ms)} & \textbf{Speed Index (s)} & \textbf{CLS} \\
-\hline
-Homepagina & 5.6 & 90.8 & 10210 & 10.7 & 0.079 \\
-Nieuwspagina & 5.4 & 92.4 & 11330 & 12.3 & 0.078 \\
-Campuspagina & 5.9 & 6.2 & 9830 & 13.5 & 0.08 \\
-Lessenroosterpagina & 5.6 & 6.0 & 9320 & 8.0 & 0.079 \\
-Deadlinepagina & 5.8 & 6.0 & 9580 & 6.9 & 0.08 \\
-Notificatiepagina & 7.0 & 7.7 & 8640 & 7.1 & 0.079 \\
-\hline
-\end{tabular}
-\end{table}
+\begin{tikzpicture}
+  \begin{axis}[
+    boxplot/draw direction=x,
+    xlabel={First Contentful Paint (s)},
+	ytick={1,2,3,4,5,6},
+    yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+    title={FCP Measurements}
+  ]
+    \addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+5.3
+7.0
+6.9
+5.6
+7.0
+7.1
+7.1
+5.6
+6.9
+7.0
+5.9
+7.1
+5.5
+7.1
+7.3
+
+    };
+	\addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+7.5
+7.5
+7.1
+5.6
+5.4
+5.7
+5.6
+7.4
+5.8
+6.9
+5.7
+5.3
+5.9
+7.2
+7.0
+
+    };
+	\addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+5.7
+5.9
+7.3
+7.0
+6.9
+5.6
+7.1
+7.1
+6.9
+6.9
+6.9
+7.1
+5.5
+7.2
+5.6
+
+    };
+	\addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+5.4
+7.1
+5.5
+5.3
+6.9
+6.9
+6.9
+5.5
+5.3
+6.9
+7.1
+7.1
+7.4
+7.1
+6.8
+
+    };
+	\addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+5.3
+5.5
+6.9
+5.3
+5.5
+5.4
+7.1
+7.1
+7.1
+7.1
+7.3
+5.3
+7.1
+6.9
+7.1
+
+    };
+	\addplot[
+      boxplot,
+	  fill=red!20
+    ] table[y index=0] {
+      data
+5.6
+7.2
+5.4
+5.6
+6.9
+7.2
+7.2
+7.2
+5.6
+7.2
+5.4
+5.5
+7.0
+5.6
+7.2
+
+    };
+  \end{axis}
+\end{tikzpicture}
+\caption{First Contentful Paint (FCP) per pagina}
+\label{fig:fcp-hertesting}
+\end{figure}
 
 Uit de resultaten blijkt dat de verschillende pagina’s een gelijkaardig patroon vertonen binnen de gemeten metrics. De waarden voor FCP en LCP blijven relatief consistent over de pagina’s heen, met uitzondering van enkele uitschieters.
 
