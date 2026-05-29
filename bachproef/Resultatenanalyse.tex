@@ -19,6 +19,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={First Contentful Paint (s)},
+    xmin=5, xmax=7.5,
+    xtick={5,5.5,6,6.5,7,7.5},
     ytick={1,2,3,4,5,6},
     yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
     ymajorgrids,
@@ -170,6 +172,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={First Contentful Paint (s)},
+    xmin=5, xmax=7.5,
+    xtick={5,5.5,6,6.5,7,7.5},
     ytick={1,2,3,4,5,6},
     yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
     ymajorgrids,
@@ -313,9 +317,9 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 	\begin{axis}[
 		boxplot/draw direction=x,
 		xlabel={Largest Contentful Paint (s)},
-	    ytick={1,2},
+	  ytick={1,2},
 		yticklabels={Home, Nieuws},
-	    ymajorgrids,
+	  ymajorgrids,
 		title={LCP Measurements}
 	]
 		\addplot[
@@ -370,6 +374,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={Largest Contentful Paint (s)},
+    xmin=0, xmax=100,
+    xtick={0,10,20,30,40,50,60,70,80,90,100},
     ytick={1,2},
     yticklabels={Home, Nieuws},
     ymajorgrids,
@@ -423,9 +429,11 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 	\begin{axis}[
 		boxplot/draw direction=x,
 		xlabel={Largest Contentful Paint (s)},
-	ytick={1,2,3,4},
+    xmin=5, xmax=8.5,
+    xtick={5,5.5,6,6.5,7,7.5,8,8.5},
+	  ytick={1,2,3,4},
 		yticklabels={ Campus, Lessenrooster, Deadline, Notificatie},
-	ymajorgrids,
+	  ymajorgrids,
 		title={LCP Measurements (continued) }
 	]
 	\addplot[
@@ -523,6 +531,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={Largest Contentful Paint (s)},
+    xmin=5, xmax=8.5,
+    xtick={5,5.5,6,6.5,7,7.5,8,8.5},
     ytick={1,2,3,4},
     yticklabels={Campus, Lessenrooster, Deadline, Notificatie},
     ymajorgrids,
@@ -560,7 +570,7 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
       7.5
       7.5
       7.5
-      82.8
+      8.0
       7.5
       7.0
     };
@@ -615,6 +625,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 	\begin{axis}[
 		boxplot/draw direction=x,
 		xlabel={Speed Index (s)},
+    xmin=7, xmax=18,
+    xtick={7,8,9,10,11,12,13,14,15,16,17,18},
 	ytick={1,2,3,4,5,6},
 		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
 	ymajorgrids,
@@ -757,6 +769,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={Speed Index (s)},
+    xmin=7, xmax=18,
+    xtick={7,8,9,10,11,12,13,14,15,16,17,18},
     ytick={1,2,3,4,5,6},
     yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
     ymajorgrids,
@@ -882,9 +896,11 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 	\begin{axis}[
 		boxplot/draw direction=x,
 		xlabel={Total Blocking Time (ms)},
-	ytick={1,2,3,4,5,6},
+    xmin=0, xmax=18000,
+    xtick={0,10000,12000,14000,16000,18000},
+	  ytick={1,2,3,4,5,6},
 		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
-	ymajorgrids,
+	  ymajorgrids,
 		title={TBT Measurements}
 	]
 		\addplot[
@@ -1024,6 +1040,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
   \begin{axis}[
     boxplot/draw direction=x,
     xlabel={Total Blocking Time (ms)},
+    xmin=0, xmax=18000,
+    xtick={0,10000,12000,14000,16000,18000},
     ytick={1,2,3,4,5,6},
     yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
     ymajorgrids,
