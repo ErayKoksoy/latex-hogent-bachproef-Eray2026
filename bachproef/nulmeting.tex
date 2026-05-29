@@ -469,6 +469,145 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 	\end{axis}
 \end{tikzpicture}
 
+\begin{tikzpicture}
+	\begin{axis}[
+		boxplot/draw direction=x,
+		xlabel={Total Blocking Time (ms)},
+	ytick={1,2,3,4,5,6},
+		yticklabels={Home, Nieuws, Campus, Lessenrooster, Deadline, Notificatie},
+	ymajorgrids,
+		title={TBT Measurements}
+	]
+		\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11740
+			11980
+			11170
+			11300
+			11150
+			11720
+			11420
+			11400
+			11670
+			11310
+			11650
+			9240
+			11410
+			11240
+			11320
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			9730
+			11030
+			11820
+			10920
+			11100
+			10770
+			10750
+			11340
+			11710
+			10630
+			10400
+			10930
+			11110
+			11620
+			15560
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			10150
+			10590
+			11030
+			11350
+			10730
+			10620
+			10650
+			10810
+			11410
+			10150
+			10420
+			10820
+			10540
+			11490
+			9980
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			10000
+			9760
+			9560
+			9710
+			9680
+			9660
+			10380
+			10800
+			10200
+			10320
+			9930
+			9230
+			10100
+			9510
+			9930
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11740
+			9730
+			10030
+			10180
+			9040
+			9080
+			9750
+			9520
+			10240
+			9920
+			10010
+			9440
+			10040
+			10000
+			11000
+		};
+	\addplot[
+			boxplot,
+	  fill=blue!20
+		] table[y index=0] {
+			data
+			11420
+			9510
+			9040
+			9850
+			10640
+			9580
+			10680
+			10040
+			10540
+			10210
+			9770
+			10050
+			10850
+			11000
+			10450
+			9660
+		};
+	\end{axis}
+\end{tikzpicture}
+
 \begin{table}[h]
 \centering
 \caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
