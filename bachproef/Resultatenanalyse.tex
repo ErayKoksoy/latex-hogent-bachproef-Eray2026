@@ -10,7 +10,7 @@ In dit hoofdstuk worden de oorspronkelijke experimenten herhaald onder zo vergel
 
 De performantie van de applicatie werd geëvalueerd aan de hand van een Lighthouse-audit. Hierbij worden verschillende kernmetrics gebruikt die samen een beeld geven van de laadsnelheid, responsiviteit en visuele stabiliteit van de applicatie. De belangrijkste metrics zijn First Contentful Paint (FCP), Largest Contentful Paint (LCP), Total Blocking Time (TBT), Speed Index en Cumulative Layout Shift (CLS).
 
-De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
+De gemeten waarden per pagina zijn weergegeven in onderstaande figuren en tabellen.
 
 \begin{figure}[H]
 \centering
@@ -310,6 +310,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \label{fig:fcp-comparison}
 \end{figure}
 
+De \textbf{First Contentful Paint (FCP)} blijven de resultaten in beide metingen relatief gelijkaardig. De mediane waarden bevinden zich op de meeste pagina’s tussen ongeveer 5,5 en 7 seconden. In de hertesting is echter zichtbaar dat verschillende boxplotten compacter worden, wat wijst op een stabielere rendering van de eerste zichtbare inhoud. Vooral bij de Home-, Nieuws- en Deadlinepagina is minder spreiding zichtbaar. Dit betekent dat de applicatie consistenter reageert na de optimalisaties.
+
 \begin{figure}[H]
 \centering
 \textbf{(a) Nulmeting}\\[1ex]
@@ -421,6 +423,10 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \caption{Vergelijking van Largest Contentful Paint (LCP) voor de Home- en Nieuwspagina: links de nulmeting, rechts de hertesting.}
 \label{fig:lcp-comparison-home-nieuws}
 \end{figure}
+
+Voor de \textbf{Largest Contentful Paint (LCP)} blijven de resultaten tussen de nulmeting en de hertesting grotendeels stabiel. Bij de Nieuwspagina blijft zowel de mediaan als de spreiding vrijwel identiek, wat aangeeft dat de toegankelijkheidsimplementaties geen merkbare invloed hadden op het laden van de grootste zichtbare inhoud.
+
+Bij de Homepagina is tijdens de hertesting een grotere spreiding zichtbaar. Dit wordt veroorzaakt door enkele metingen met aanzienlijk lagere waarden dan tijdens de nulmeting. Hierdoor ontstaat een bredere boxplot. Deze variatie wijst echter niet op een structurele verslechtering van de performantie. Integendeel, bepaalde metingen tonen zelfs een snellere rendering van de grootste content-elementen. De verschillen kunnen verklaard worden door externe factoren zoals caching of variaties in netwerkcondities tijdens de metingen.
 
 \begin{figure}[H]
 \centering
@@ -615,6 +621,10 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \caption{Vergelijking van Largest Contentful Paint (LCP) voor de overige pagina’s: links de nulmeting, rechts de hertesting.}
 \label{fig:lcp-hertesting}
 \end{figure}
+
+Voor de overige pagina’s blijven de \textbf{Largest Contentful Paint (LCP)}-waarden eveneens grotendeels stabiel tussen de nulmeting en de hertesting. De mediane waarden bevinden zich bij beide meetmomenten voornamelijk tussen 6 en 8 seconden. Dit toont aan dat de toegankelijkheidsverbeteringen geen merkbare negatieve invloed hadden op het laden van de grootste zichtbare elementen binnen de applicatie.
+
+Bij de Campus-, Lessenrooster- en Notificatiepagina blijven de boxplotten sterk vergelijkbaar qua spreiding en mediaan. Enkel kleine verschuivingen zijn zichtbaar, maar deze vallen binnen de normale variatie van performantiemetingen. De Deadlinepagina toont tijdens de hertesting zelfs een iets compactere spreiding, wat wijst op een stabielere rendering van content.
 
 \begin{figure}[H]
 \centering
@@ -889,6 +899,8 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \label{fig:speed-index-comparison}
 \end{figure}
 
+De \textbf{Speed Index} toont een gemengd beeld. Op sommige pagina’s, zoals Home en Nieuws, is een lichte verbetering zichtbaar doordat de mediane waarde daalt en de boxplot compacter wordt. Dit betekent dat visuele inhoud sneller zichtbaar wordt voor de gebruiker. Bij andere pagina’s, zoals Campus, stijgt de mediane waarde licht tijdens de hertesting. Daarnaast verschijnt bij de Lessenroosterpagina een duidelijke uitschieter rond 17 seconden, wat wijst op een tijdelijke vertraging tijdens het renderen. Globaal kan gesteld worden dat de optimalisaties vooral een positieve invloed hadden op de consistentie van de visuele laadtijd, maar niet op alle pagina’s een directe snelheidswinst opleverden.
+
 \begin{figure}[H]
 \centering
 \textbf{(a) Nulmeting}\\[1ex]
@@ -1160,27 +1172,36 @@ De gemeten waarden per pagina zijn weergegeven in onderstaande tabel.
 \label{fig:tbt-comparison}
 \end{figure}
 
+Voor de \textbf{Total Blocking Time (TBT)} blijven de resultaten relatief vergelijkbaar tussen beide metingen. De mediane waarden blijven voor de meeste pagina’s rond 9,000 tot 12,000 milliseconden liggen. Wel valt op dat sommige pagina’s in de hertesting een iets compactere spreiding vertonen, wat duidt op een stabielere verwerking. Tegelijk blijven enkele sterke uitschieters aanwezig, zoals bij de Deadlinepagina en Lessenroosterpagina, waar pieken tot boven 15,000 milliseconden voorkomen. Hierdoor kan geconcludeerd worden dat de optimalisaties slechts een beperkte invloed hadden op het verminderen van blocking time.
+
 \begin{table}[H]
 \centering
-\caption[CLS-waarden per pagina tijdens de hertesting]{Overzicht van de Cumulative Layout Shift-waarden per pagina tijdens de hertesting.}
+\caption[CLS-waarden per pagina: nulmeting en hertesting]{Overzicht van de Cumulative Layout Shift-waarden per pagina tijdens de nulmeting en hertesting.}
 \label{tab:cls-hertesting-per-pagina}
 \begin{tabular}{lc}
 \hline
-\textbf{Pagina} & \textbf{CLS} \\
+\textbf{Pagina} & \textbf{CLS (nulmeting / hertesting)} \\
 \hline
-Homepagina & 0.079 \\
-Nieuwspagina & 0.078 \\
-Campuspagina & 0.080 \\
-Lessenroosterpagina & 0.079 \\
-Deadlinepagina & 0.080 \\
-Notificatiepagina & 0.079 \\
+Homepagina & 0.079 / 0.079 \\
+Nieuwspagina & 0.078 / 0.078 \\
+Campuspagina & 0.080 / 0.080 \\
+Lessenroosterpagina & 0.079 / 0.079 \\
+Deadlinepagina & 0.080 / 0.080 \\
+Notificatiepagina & 0.079 / 0.079 \\
 \hline
 \end{tabular}
 \end{table}
 
-Uit de resultaten blijkt dat de verschillende pagina’s een gelijkaardig patroon vertonen binnen de gemeten metrics. De waarden voor FCP en LCP blijven relatief consistent over de pagina’s heen, met uitzondering van enkele uitschieters.
+De resultaten van de \textbf{Cumulative Layout Shift (CLS)} tonen daarentegen een zeer stabiel beeld. Alle pagina’s behalen waarden rond 0,078 tot 0,080, wat ruim binnen de aanbevolen grens van 0,1 ligt. Dit betekent dat de lay-out van de applicatie visueel stabiel blijft tijdens het laden en dat gebruikers weinig onverwachte verschuivingen ervaren. De optimalisaties hadden hier weinig zichtbare impact omdat de applicatie reeds goede CLS-scores behaalde tijdens de nulmeting.
 
-De verdere interpretatie van deze resultaten en de vergelijking met de hertest worden behandeld in de volgende sectie.
+
+\paragraph{Algemene conclusie}
+
+Globaal tonen de resultaten aan dat de performantie van de applicatie na de toegankelijkheidsoptimalisaties grotendeels stabiel is gebleven. Voor de meeste metrics, waaronder FCP, LCP en TBT, worden geen significante verbeteringen of degradaties vastgesteld.
+
+Enkele beperkte verbeteringen in spreiding en consistentie zijn zichtbaar, voornamelijk bij FCP en in beperkte mate bij Speed Index. Deze effecten zijn echter niet uniform over alle pagina’s en metrics heen.
+
+De CLS-waarden blijven volledig stabiel en binnen de aanbevolen grenswaarden. De resultaten suggereren bijgevolg dat de uitgevoerde toegankelijkheidsaanpassingen geen negatieve impact hebben gehad op de performantie van de applicatie.
 
 \subsubsection{toegankelijkheid}
 
@@ -1222,124 +1243,3 @@ De resultaten van de hertesting tonen aan dat deze problemen in belangrijke mate
 Verder worden interface-elementen nu correct herkend en aangekondigd door NVDA. Dit omvat onder andere het voorlezen van labels, rollen en statussen van interactieve componenten, waardoor gebruikers een beter inzicht krijgen in de functionaliteit en structuur van de applicatie.
 
 De vergelijking tussen beide meetmomenten wijst op een duidelijke verbetering in de praktische toegankelijkheid van de applicatie. Waar de nulmeting wees op structurele problemen in navigatie en interpretatie, bevestigt de hertesting dat de doorgevoerde aanpassingen hebben geleid tot een aanzienlijk betere ondersteuning van assistieve technologieën en toetsenbordgebruik.
-
-
-\subsection{Visualisatie: nulmeting vs hertesting (performantie)}
-
-Om de vergelijking tussen nulmeting en hertesting visueel te ondersteunen, worden hieronder overlay-grafieken weergegeven. Hierbij worden beide meetmomenten per metric in één figuur geplaatst, zodat verschillen en stabiliteit direct zichtbaar worden.
-
-\subsubsection{FCP vergelijking (nulmeting vs hertesting)}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    width=0.9\textwidth,
-    ybar,
-    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
-    xtick=data,
-    ylabel={FCP (s)},
-    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
-    ymin=0,
-    bar width=6pt
-]
-
-\addplot coordinates {
-    (Home,7.0) (Nieuws,5.1) (Campus,5.7)
-    (Roster,7.1) (Deadline,5.4) (Notificaties,5.5)
-};
-
-\addplot coordinates {
-    (Home,5.6) (Nieuws,5.4) (Campus,5.9)
-    (Roster,5.6) (Deadline,5.8) (Notificaties,7.0)
-};
-
-\legend{Nulmeting,Hertesting}
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-
-\subsubsection{LCP vergelijking (nulmeting vs hertesting)}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    width=0.9\textwidth,
-    ybar,
-    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
-    xtick=data,
-    ylabel={LCP (s)},
-    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
-    ymin=0,
-    bar width=6pt
-]
-
-\addplot coordinates {
-    (Home,7.5) (Nieuws,92.1) (Campus,6.3)
-    (Roster,7.7) (Deadline,5.9) (Notificaties,6.0)
-};
-
-\addplot coordinates {
-    (Home,90.8) (Nieuws,92.4) (Campus,6.2)
-    (Roster,6.0) (Deadline,6.0) (Notificaties,7.7)
-};
-
-\legend{Nulmeting,Hertesting}
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\subsubsection{TBT vergelijking (nulmeting vs hertesting)}
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    width=0.9\textwidth,
-    ybar,
-    symbolic x coords={Home,Nieuws,Campus,Roster,Deadline,Notificaties},
-    xtick=data,
-    ylabel={TBT (ms)},
-    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
-    ymin=0,
-    bar width=6pt
-]
-
-\addplot coordinates {
-    (Home,9790) (Nieuws,9320) (Campus,9440)
-    (Roster,18680) (Deadline,19200) (Notificaties,10530)
-};
-
-\addplot coordinates {
-    (Home,10210) (Nieuws,11330) (Campus,9830)
-    (Roster,9320) (Deadline,9580) (Notificaties,8640)
-};
-
-\legend{Nulmeting,Hertesting}
-\end{axis}
-\end{tikzpicture}
-\end{center}
-
-\subsubsection{Percentuele verandering tussen nulmeting en hertesting}
-
-Onderstaande tabel toont de relatieve verandering (\(\Delta\%\)) per metric en per pagina. Een waarde rond 0\% wijst op geen meetbare impact, terwijl grote schommelingen eerder wijzen op meetvariatie dan op structurele verbetering.
-
-\begin{table}[h]
-\centering
-\caption{Percentuele verandering per metric tussen nulmeting en hertesting}
-\label{tab:delta-percentueel}
-\begin{tabular}{lccccc}
-\hline
-\textbf{Pagina} & \textbf{FCP} & \textbf{LCP} & \textbf{TBT} & \textbf{Speed Index} & \textbf{CLS} \\
-\hline
-Home & -20.0\% & +1110\% & +4.3\% & +2.9\% & 0\% \\
-Nieuwspagina & +5.9\% & +0.3\% & +21.6\% & +10.8\% & 0\% \\
-Campuspagina & +3.5\% & -1.6\% & +4.1\% & +0.7\% & 0\% \\
-Lessenrooster & -21.1\% & -22.1\% & -50.1\% & 0\% & n.v.t. \\
-Deadlinepagina & +7.4\% & +1.7\% & -50.1\% & +27.8\% & 0\% \\
-Notificaties & +27.3\% & +28.3\% & -17.9\% & -9.0\% & 0\% \\
-\hline
-\end{tabular}
-\end{table}
-
-\subsubsection{Korte impactsamenvatting}
-
-Op basis van de tabel hierboven kan geconcludeerd worden dat de impact van de aangebrachte wijzigingen vooral zichtbaar is in de verwerkingsbelasting van de applicatie, terwijl de overige metrics minder uitgesproken veranderen. De volledige eindconclusie en duiding van de betekenis voor toegankelijkheid worden in het volgende hoofdstuk besproken.
-
-
