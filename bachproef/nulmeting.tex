@@ -28,7 +28,9 @@ Figuur~\ref{fig:homepage-campusapp} toont de homepage van het afgewerkte product
 Voor de nulmeting werd een Lighthouse-audit uitgevoerd op de webapplicatie. Omdat de onderzoeksvraag focust op gebruikservaring en technische kwaliteit, zijn vooral performantie en toegankelijkheid relevant.
 
 \subsubsection{Performantie}
-De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gemeten waarden per pagina zijn:
+Om de performantie van de applicatie objectief te evalueren, werd een nulmeting uitgevoerd op zes verschillende pagina’s: Home, Nieuws, Campus, Lessenrooster, Deadline en Notificatie. Voor elke pagina werden vijftien metingen uitgevoerd met Lighthouse, zodat niet enkel gemiddelde waarden maar ook de spreiding en consistentie van de resultaten konden worden geanalyseerd. De resultaten worden weergegeven aan de hand van boxplots, waardoor verschillen tussen pagina’s en variaties tussen metingen duidelijk zichtbaar worden.
+
+De nulmeting dient als baseline voor de verdere optimalisaties in dit onderzoek. Het doel van deze metingen is het creëren van een referentiepunt waarmee de impact van toekomstige verbeteringen objectief kan worden vergeleken.
 
 \begin{tikzpicture}
   \begin{axis}[
@@ -178,6 +180,8 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
     };
   \end{axis}
 \end{tikzpicture}
+
+De \textit{First Contentful Paint} (FCP)-metingen tonen aan hoe snel de eerste zichtbare inhoud op het scherm verschijnt. De resultaten liggen voor de verschillende pagina’s relatief dicht bij elkaar, wat wijst op consistente laadtijden binnen de applicatie. Ook de beperkte spreiding in de boxplots bevestigt dat de resultaten stabiel blijven over meerdere metingen.
 
 \begin{tikzpicture}
 	\begin{axis}[
@@ -330,6 +334,8 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 	\end{axis}
 \end{tikzpicture}
 
+Bij de \textit{Largest Contentful Paint} (LCP)-metingen is zichtbaar wanneer het grootste inhoudselement volledig gerenderd wordt. De Home- en Nieuwspagina vertonen duidelijk hogere LCP-waarden dan de overige pagina’s, wat verklaarbaar is door de grotere hoeveelheid visuele en dynamische inhoud die bij het laden verwerkt moet worden. De andere pagina’s liggen qua resultaten dicht bij elkaar, wat wijst op een consistente renderingperformantie binnen de rest van de applicatie.
+
 \begin{tikzpicture}
 	\begin{axis}[
 		boxplot/draw direction=x,
@@ -468,6 +474,8 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 		};
 	\end{axis}
 \end{tikzpicture}
+
+De \textit{Speed Index} geeft weer hoe snel de zichtbare inhoud geleidelijk opgebouwd wordt tijdens het laden van de pagina. De metingen tonen een gelijkaardig patroon over de verschillende pagina’s, waardoor deze metriek later gebruikt kan worden om de invloed van optimalisaties op de gebruikerservaring te evalueren.
 
 \begin{tikzpicture}
 	\begin{axis}[
@@ -608,23 +616,27 @@ De performantiemeting toont duidelijke optimalisatiekansen. De belangrijkste gem
 	\end{axis}
 \end{tikzpicture}
 
+Daarnaast werd ook de \textit{Total Blocking Time} (TBT) gemeten. Deze metriek geeft inzicht in de tijd waarin de browser bezig is met het verwerken van taken op de main thread. De resultaten vormen een nuttige basis om later de impact van optimalisaties in JavaScript-verwerking en rendering te analyseren.
+
 \begin{table}[h]
 \centering
-\caption[Performantiemeting per pagina]{Overzicht van de Lighthouse-performantiemetrics per pagina.}
-\label{tab:lighthouse-nulmeting-per-pagina}
-\begin{tabular}{lccccc}
+\caption[CLS-waarden per pagina]{Overzicht van de Cumulative Layout Shift-waarden per pagina tijdens de nulmeting.}
+\label{tab:cls-nulmeting-per-pagina}
+\begin{tabular}{lc}
 \hline
-\textbf{Pagina} & \textbf{FCP (s)} & \textbf{LCP (s)} & \textbf{TBT (ms)} & \textbf{Speed Index (s)} & \textbf{CLS} \\
+\textbf{Pagina} & \textbf{CLS} \\
 \hline
-Homepagina & 7.0 & 7.5 & 9790 & 10.4 & 0.079 \\
-Nieuwspagina & 5.1 & 92.1 & 9320 & 11.1 & 0.078 \\
-Campuspagina & 5.7 & 6.3 & 9440 & 13.4 & 0.08 \\
-Lessenroosterpagina & 7.1 & 7.7 & 18680 & 8.0 & 0 \\
-Deadlinepagina & 5.4 & 5.9 & 19200 & 5.4 & 0.08 \\
-Notificatiepagina & 5.5 & 6.0 & 10530 & 7.8 & 0.079 \\
+Homepagina & 0.079 \\
+Nieuwspagina & 0.078 \\
+Campuspagina & 0.080 \\
+Lessenroosterpagina & 0.079 \\
+Deadlinepagina & 0.080 \\
+Notificatiepagina & 0.079 \\
 \hline
 \end{tabular}
 \end{table}
+
+De \textit{Cumulative Layout Shift} (CLS)-waarden blijven op alle pagina’s zeer stabiel. Dit wijst erop dat de layout tijdens het laden consistent blijft en dat elementen weinig onverwachte verschuivingen vertonen.
 
 De betekenis van deze metingen is als volgt:
 
