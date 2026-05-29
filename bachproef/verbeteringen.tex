@@ -363,11 +363,12 @@ Sommige interface-elementen (bijvoorbeeld kaartitems of lesblokken) zijn opgebou
 
 Een veelgebruikte oplossing is het toevoegen van \texttt{tabindex="0"} om zulke elementen focusbaar te maken. Dit zorgt dat ze opgenomen worden in de tabvolgorde en dat ze visueel een focusstaat krijgen door de eerder beschreven focusregels. Belangrijke aandachtspunten:
 
-- Gebruik \texttt{tabindex="0"} (niet positieve waarden) zodat de natuurlijke tabvolgorde behouden blijft;
-- Geef duidelijke ARIA- of tekstuele labels (\texttt{aria-label} of zichtbare tekst) zodat screenreaders context krijgen;
-- Zorg dat toetsenbordactivatie werkt: behandel \texttt{Enter} en \texttt{Space} als activering (bij voorkeur via een aparte \texttt{@onkeydown}-handler of door een semantisch element zoals \texttt{button} of \texttt{a} te gebruiken);
-- Overweeg \texttt{role="button"} wanneer een element semantisch geen knop is maar wel knopgedrag heeft.
-
+\begin{itemize}
+    \item Gebruik \texttt{tabindex="0"} (niet positieve waarden) zodat de natuurlijke tabvolgorde behouden blijft;
+    \item Geef duidelijke ARIA- of tekstuele labels (\texttt{aria-label} of zichtbare tekst) zodat screenreaders context krijgen;
+    \item Zorg dat toetsenbordactivatie werkt: behandel \texttt{Enter} en \texttt{Space} als activering (bij voorkeur via een aparte \texttt{@onkeydown}-handler of door een semantisch element zoals \texttt{button} of \texttt{a} te gebruiken);
+    \item Overweeg \texttt{role="button"} wanneer een element semantisch geen knop is maar wel knopgedrag heeft.
+\end{itemize}
 Onderstaand voorbeeld illustreert de aanpak toegepast op een lesblok in het lessenrooster. Het element is focusbaar gemaakt met \texttt{tabindex="0"} en krijgt een dynamische \texttt{aria-label} zodat screenreaders relevante context voorlezen.
 
 \begin{listing}[H]
