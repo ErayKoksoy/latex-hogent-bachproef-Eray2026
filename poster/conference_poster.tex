@@ -67,19 +67,38 @@ Het onderzoek werd uitgevoerd in vijf opeenvolgende fasen:
     \item \textbf{Robuustheid:} correct gebruik van ARIA-attributen en verbeterde compatibiliteit met assistieve technologieën.
 \end{itemize}
 
-\begin{comment}
-\section{Sectie met figuur}
+\section{Resultaten}
+\subsection{Toegankelijkheid}
 
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
+De toegankelijkheidscores verbeterden op vrijwel alle onderzochte pagina's:
 
 \begin{center}
-  \captionsetup{type=figure}
-  \includegraphics[width=1.0\linewidth]{grail}
-  \captionof{figure}{He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say `Ni' again to you, if you do not appease us}
+\begin{tabular}{l c c}
+\textbf{Pagina} & \textbf{Voor} & \textbf{Na} \\
+\hline
+Home & 86 & 96 \\
+Nieuws & 89 & 100 \\
+Campus & 90 & 100 \\
+Lesrooster & 86 & 100 \\
+Deadlines & 82 & 100 \\
+Notificaties & 87 & 100 \\
+\end{tabular}
+
+\textit{Schaal: 0-49 (Slecht), 50-89 (Verbetering nodig), 90-100 (Goed)}
 \end{center}
 
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
-\end{comment}
+\subsection{Toegankelijkheid}
+De hertesting toont aan dat de implementatie van toegankelijkheidsmaatregelen geen significante negatieve impact heeft op de performantie van de applicatie.
+
+\begin{itemize}
+  \item FCP bleef stabiel
+  \item LCP vertoonde slechts minimale verschillen
+  \item Speed Index bleef vergelijkbaar
+  \item CLS bleef ongewijzigd
+  \item TBT wijzigde slechts beperkt
+\end{itemize}
+
+De resultaten bevestigen dat toegankelijkheid en performantie geen tegenstrijdige doelstellingen hoeven te zijn.
 
 \section{Conclusies}
 
@@ -91,13 +110,13 @@ Digitale toegankelijkheid moet daarom niet worden beschouwd als een optionele ui
 
 \section{Toekomstig onderzoek}
 
-\itemize
+\begin{itemize}
   \item Gebruikerstesten met studenten met een beperking
   \item Evaluatie op mobiele iOS- en Android-platformen
   \item Integratie van toegankelijkheidscontroles in CI/CD-pipelines
   \item Onderzoek naar WCAG 2.2 en toekomstige WCAG 3.0-richtlijnen
   \item Uitbreiding van het toegankelijkheidskader naar andere HOGENT-platformen
-\enditemize
+\end{itemize}
 
 \end{multicols}
 \end{document}
